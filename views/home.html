@@ -17,22 +17,85 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body {
+        font-family: "DynaPuff", cursive;
+      }
+    </style>
   </head>
   <body>
-    <div
-      class="container mt-5 text-center height-300 justify-content-center align-items-center w-50"
-      style="font-family: &quot;DynaPuff&quot;, cursive"
+  
+   <nav class="navbar navbar-expand-lg bg-white shadow-sm rounded-4 mt-3 px-5">
+  <div class="container-fluid">
+    <a class="navbar-brand brand-title" href="/">
+      <img src="./img/logo.png" alt="What's My Name" height="80" />
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
     >
-      <div
-        class="header bg-warning text-center justify-content-center col-12 rounded"
-      >
-        <h1 class="">What's my Name?</h1>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+
+      <ul class="navbar-nav  mx-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link" href="/play">Play</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/leaderboard">Leaderboard</a>
+        </li>
+
+      </ul>
+
+      <!-- Right Side -->
+      <div class="d-flex">
+
+        <a href="/login" class="btn btn-warning rounded-pill px-4">
+          Login
+        </a>
+
       </div>
 
-      <div class="body text-center justify-content-center col-6">
-        <div class="card mb-3 bg-light rounded p-3 justify-content-center"></div>
-        <div></div>
+    </div>
+
+  </div>
+</nav>
+    <div
+      class="container mt-5 text-center height-300 justify-content-center align-items-center w-50"
+     
+    >
+    
+    <div class="header text-center col-4 offset-10 rounded w-50 mb-3">
+      <h2>Score: 0</h2>
+    </div>
+    <br/>
+      <div
+        class="header bg-warning text-center justify-content-center col-12 rounded mt-5 mb-5"
+      >
+        <h2 class="mt-3">A fun game to test your knowledge of animals</h2>
+        Count down timer: <span id="timer">30</span> seconds
+        
       </div>
+
+      <div class="body text-center d-flex justify-content-center col-12">
+        <div class="card mb-3 bg-light rounded p-3 col-5">
+          <h2>Next question</h2>
+        </div>
+        <div class="card mb-3 bg-light rounded p-3 col-5 offset-1"></div>
+         </div>
+        <div class="card mb-3 bg-light rounded p-3 col-12 hover:true"></div>
+        <div class="text-center mt-3 d-flex justify-content-center col-12">
+          <div class="btn btn-primary col-5">Reset</div>
+          <div class="btn btn-secondary col-5 offset-1">Skip</div>
+        </div>
+     
     </div>
   </body>
 </html>
