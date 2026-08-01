@@ -1,0 +1,482 @@
+[
+  {
+    "Name": "Aardvark",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351448/Aardvark_p7d9k3.png",
+    "Scientific name": "Orycteropus afer",
+    "Description": "They belong to the same group of mammals as the African elephant and have no relation to anteaters despite their similar appearance. They have a short neck connected to a strong, large, almost hairless body with an arched back. Their legs are not proportional to each other; the hind legs are longer than the front ones. They have an elongated head, with a long, protruding, narrow snout and nostrils that can be sealed. Their ears are long and tubular and are normally held upright but can be folded and closed. Their tapered, cone-shaped tail is short and muscular, and they have thick claws on the forefeet that are well adapted for digging.",
+    "Habitat": "All savanna types, rainforests, woodlands, and thickets",
+    "Diet": "Insectivorous, Myrmecophagous"
+  },
+  {
+    "Name": "African Buffalo",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351448/African_Buffalo_unafup.png",
+    "Scientific name": "Syncerus caffer",
+    "Description": "There is only one species of buffalo in Africa but four distinct subspecies exist: forest buffalo, West African savanna buffalo, Central African buffalo, and southern savanna buffalo (also known as the Cape buffalo).  Savanna buffaloes are large, heavy cow-like animals. They vary greatly not only in size but in the shapes of their horns and their coloring. Adults are usually dark gray or black (or even look red or white if they have been wallowing in mud of that color) and the young are often reddish-brown. The smaller forest buffalo maintains the red color even as an adult, although in western Uganda, many savanna buffaloes are also red or pale orange instead of black. Adults lose hair as they age.  Both males and females have heavy, ridged horns that grow straight out from the head or curve downward and then up. The horns are formidable weapons against predators and are used when jostling for space within the herd; males use the horns in fights for dominance.",
+    "Habitat": "Dense forest to open plains",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "African Hare",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351448/African_Hare_yecqiu.png",
+    "Scientific name": "Lepus victoriae",
+    "Description": "This nocturnal savanna mammal is covered in coarse, thick fur, and measures about 50 centimeters (20 inches). It has a short tail and strong hind feet that measure about 17 centimeters (4 inches). The African hare, like the closely related cape hare (or desert hare), has mobile ears that are as long if not sometimes longer than their bodies. Helping it to cut and nip at vegetation are two pairs of chisel-shaped incisors, which display a distinctive groove pattern that sets it apart from the cape hare.",
+    "Habitat": "Scrubby grasslands within wooded savannas",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "African Wild Dog",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351448/African_Wild_Dog_knu1sa.png",
+    "Scientific name": "Lycaon pictus",
+    "Description": "The wild dog — also sometimes called the hunting dog or African painted dog — has a colorful, patchy coat; large bat-like ears; and a bushy tail with a white tip that may serve as a flag to keep the pack in contact while hunting. No two wild dogs are marked exactly the same, making it easy to identify individuals.",
+    "Habitat": "Dense forest to open plains",
+    "Diet": "Carnivorous"
+  },
+  {
+    "Name": "Baboon",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351450/Baboon_xan7j2.png",
+    "Scientific name": "Olive baboon (Papio anubis) Yellow baboon (Papio cynocephalus) Sacred baboon (Papio hamadryas) Chacma baboon (Papio ursinus) Guinea baboon (Papio papio)",
+    "Description": "They are some of the world’s largest monkeys. There are five species of the baboon — olive, yellow, chacma, Guinea, and sacred — scattered across various habitat in Africa and Arabia. The olive baboon is the most extensively distributed of the baboon family. The baboon, like other Old World monkeys, does not have a prehensile (gripping) tail — meaning their tails are not used as a hand — but they are still able to climb when necessary. They all have dog-like noses, powerful jaws, sharp canine teeth, and thick fur. Males have a longer mane around the neck, called a ruff.",
+    "Habitat": "Savannas and woodlands",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Bat",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351450/Bat_yuruvq.png",
+    "Scientific name": "Over 200 species of African bats — Africa is home to 20 percent of the world’s bats.",
+    "Description": "After rodents, they are the most numerous mammals on earth. African bats fall into two major categories: large fruit bats and smaller, insect-eating bats, neither of which attacks people. In addition to a difference in size between the two types, there is a great variation in the extent and details of the wings, which are formed by the naked membrane of skin that extends from the neck to the wrist and between the fingers, and finally to the tail. Wing shapes vary from species to species. Usually, the swift fliers have long, narrow wings while the slow fliers have broad, rounded ones.  The bones of the hand that support the wing membrane are unusually long. The hind legs are rotated 180 degrees at the hip joint, so the knee flexes backward rather than forward. This arrangement does not hamper the bat when it is perched but rather helps it push off from the roost for a quick getaway. They are very agile even on land, scuttling quickly over objects and squeezing their bodies through small openings.",
+    "Habitat": "Tropical and lowland rainforests as well as savannas",
+    "Diet": "Herbivorous or frugivorous"
+  },
+  {
+    "Name": "Bat-Eared Fox",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351450/Bat-Eared_Fox_qe8xc5.png",
+    "Scientific name": "Octocyon megalotis",
+    "Description": "As the name indicates, this fox has unusually enormous ears in proportion to its head, like those of many bats. Their bodies are generally yellow-brown with a pale throat and under parts. The outsides of the ears, the racoon-like “face-mask,” lower legs, feet, and tail tip are all black. Their legs are relatively short. Aside from their large ears, they are unique from other foxes by their teeth — they have more teeth than most placental mammals (46 to 50).",
+    "Habitat": "Prime habitat is short-grass plains and areas with bare ground, but they are also found in arid/semi-arid scrubland, and savanna.",
+    "Diet": "Insectivorous"
+  },
+  {
+    "Name": "Bongo",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351451/Bongo_u7zp2j.png",
+    "Scientific name": "Tragelaphus eurycerus",
+    "Description": "There are two currently recognized subspecies — the mountain or eastern bongo and the lowland or western bongo. This antelope is the largest, heaviest, and most colorful African forest antelope. It has an auburn or chestnut coat with 10 to 15 vertical whitish-yellow stripes running down its sides.  Females are usually more brightly colored than males. Both males and females have spiraled lyre-shaped horns. The large ears are believed to sharpen hearing, and the distinctive coloration may help bongos identify one another in their dark forest habitats. They have no special secretion glands and so rely less on scent to find one another than do other similar antelopes.",
+    "Habitat": "Rainforests, dense forests, and forest-savannas",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Bonobo",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351453/Bonobo_rautiy.png",
+    "Scientific name": "Pan paniscus",
+    "Description": "Our closest cousins, bonobos share 98.7 percent of our genetic makeup. They are about two-thirds the size of humans and are covered with dark hair. They are distinguished by their black faces, red lips, two or three webbed toes, a tail tuft, and parted long hair. Unlike their closest cousins, the common chimpanzees, they are not divided into subspecies.",
+    "Habitat": "Lowland rainforest, swamp forests",
+    "Diet": "Frugivorous"
+  },
+  {
+    "Name": "Bushbuck",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351453/Bushbuck_me5aul.png",
+    "Scientific name": "Tragelaphus scriptus",
+    "Description": "The bushbuck is an antelope with geometrically shaped white patches or spots on the most mobile parts of its body — the ears, chin, tail, legs, and neck. Male bushbucks have horns, which are between 10 and 20 inches long and grow straight back. At 10 months, young males sprout strongly twisted horns that form the first loop of a spiral at maturity.  ",
+    "Habitat": "Wherever there is adequate cover — typically found in forest edges or brushy cover near rivers and streams.",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Cheetah",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351453/Cheetah_t6dddm.png",
+    "Scientific name": "Acinonyx jubatus",
+    "Description": "There are five subspecies of this big cat. It is slim and has muscular, long legs — in relation to its body size when compared to other cats — a small, rounded head that is set on a long neck, a flexible spine, a deep chest, special pads on its feet for traction, and a long tail for balance. It is also the only cat that cannot retract its claws, an adaptation to help maintain traction like a soccer player’s cleats. It also bears distinctive black “tear tracks” running from the inside corner of each eye to the mouth that may serve as an anti-glare mechanism for daytime hunting.",
+    "Habitat": "Wide range of habitats—from dry forests and thick scrubs through grasslands and Sahara deserts.",
+    "Diet": "Carnivores"
+  },
+  {
+    "Name": "Chimpanzee",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351454/Chimpanzee_rplphp.png",
+    "Scientific name": "Pan troglodytes",
+    "Description": "There are four subpopulations of the chimpanzee — the western chimp, the Nigeria-Cameroon chimp, the central chimp, and the eastern chimp. This great ape is one of our closest relatives, sharing about 98 percent of their genes with us. They have thickset bodies with short legs, opposable thumbs, no tails, and long arms that are 1.5 times their height that extends beyond their knees. Much of their body is covered with long black hair, but the face, ears, fingers, and toes are bare.",
+    "Habitat": "Forests, lowland forests, swamp forests, savanna woodland",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Colobus Monkey",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351455/Colobus_Monkey_ndrevy.png",
+    "Scientific name": "Angolan black-and-white colobus (Colobus angolensis) <br /> Eastern black-and-white colobus (Colobus guereza)",
+    "Description": "The name “colobus” is derived from the Greek word for “mutilated,” because unlike other monkeys, colobus monkeys do not have thumbs. Their beautiful black fur strongly contrasts with the long white mantle, whiskers, bushy tail, and beard around the face. The Eastern black-and-white is distinguishable by a U-shaped cape of white hair running from the shoulders to lower back, whereas the Angolan black-and-white has white hairs flaring out only at the shoulders.",
+    "Habitat": "Lowland, montane forests, and gallery forests",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Dik-Dik",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351455/Dik-Dik_l8mjlw.png",
+    "Scientific name": "Madoqua kirkii",
+    "Description": "Kirk’s dik-diks are tiny antelopes that vary in color depending on their habitat but are typically yellowish-gray to reddish-brown on its back and grayish-white on their belly. Males have horns that are ringed and stout at the base, which are often concealed by a tuft of hair on their forehead. These antelopes have beautiful, large, dark eyes surrounded by a white ring. And while their eyes are stunning, they provide more than just sight. Preorbital glands appear as a black spot below the inside corner of each eye. These glands produce a dark, sticky secretion used to scent-mark their territories.  The most distinguishing feature is their elongated snout, which is also an evolved cooling mechanism that stops them from overheating, even in extreme temperatures of up to 40°C (104°F). This also helps minimize their need for water.",
+    "Habitat": "Ranges from arid, dense thorn scrub to thickets and open woodland, riverine woodlands, and open plains.",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Duiker",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351456/Duiker_e4inhk.png",
+    "Scientific name": "Blue duiker (Cephalophus monticla); Yellow-backed duiker (Cephalophus silvicultor); Bush duiker (Sylvicapra grimmia)",
+    "Description": "A striking peculiarity of the duikers in the genus Cephalophus is that they all have the same distinctive body type, although the different species vary in size. They have low-slung bodies on slender legs, wedge-shaped heads topped by a crest of long hair, and relatively large eyes. With their heads held close to the ground, these small antelopes can move easily through the dense vegetation of forests and bushlands. They regularly run through these areas and when disturbed, plunge into thick cover to hide. This trait is the source of the name “duiker,” which in Dutch means “diver.”  Environment and habitat can influence the overall body shape and coloration of animals. Thus, the duiker living in open habitat is longer-legged, less hunchbacked, and lighter in color (tawny or gray) than the species that inhabit the dense, dark forests.  The bush duiker is represented by only one species known as the common or Grimm’s duiker. This is the most widely distributed of the species in East Africa and is found in a large range of habitats at different elevations, but never in the deep forest. Unlike the forest species, the bush duiker has longer legs and can run fast for long distances. All duikers freeze and crouch to escape detection. They have dark, glossy coats and tails that have white hair that contrasts with the dark body. The tail is constantly in motion with each movement looking like a tiny torch being switched on and off in the forest gloom.  Male and female forest duikers are about the same size, and both have horns. Their horns are small and spike-like, lying so flat against the head that they are not too useful in fighting. Bush duiker females are larger than males, but they usually do not have horns.  The smallest of the species is the blue duiker, which in East Africa is found in Uganda, western Kenya, and parts of Tanzania. The largest is the yellow-backed duiker, which ranges across the whole of the African tropical forest block. Populations of the yellow-backed duiker are also found on Mt. Elgon and the Mau in Kenya. This duiker reaches up to 88 centimeters (35 inches) in height and 80 kilograms (175 pounds) in weight. It has distinctive, long whitish-yellow to orange hair that stands erect on the back.",
+    "Habitat": "Forests, coastal scrublands, farmland, and bush",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Dwarf Mongoose",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351457/Dwarf_Mongoose_blqvat.png",
+    "Scientific name": "Helogale parvula (Common dwarf mongoose) Helogale hirtula (Somali/Desert dwarf mongoose)",
+    "Description": "As the name would imply, this species is the smallest of the African mongooses. There are two species: the common dwarf and the desert dwarf. They are stocky, with a fairly short, pointed muzzle and a long, fluffy tail. Their fur color varies but they are usually speckled brown, reddish, or greyish in color.",
+    "Habitat": "Forests, open woodlands, thickets, wooded savannahs, semi-arid areas. Wherever there are termites, rock outcroppings, or trees.",
+    "Diet": "Carnivorous"
+  },
+  {
+    "Name": "Eland",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351447/Eland_zzjstq.png",
+    "Scientific name": "Tragelaphus oryx",
+    "Description": "The cow-like eland is the world’s largest antelope. However, it has the endurance to maintain a trot indefinitely and can jump a 1.5 meter (4 feet) fence from a standstill. Both males and females have horns that spiral tightly, though female horns tend to be longer and thinner. Usually fawn or tawny-colored, they turn gray or bluish-gray as they get older; the oldest animals become almost black. A tuft of black hair grows out of the male’s prominent dewlap, the loose fold of skin that hangs down from the neck. Adult males also have a mat of hair on the forehead that grows longer and denser as the animal ages.",
+    "Habitat": "Open plains, sub-desert, savanna, and woodlands",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Elephant",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351448/Elephant_qoi3bj.png",
+    "Scientific name": "Loxodonta africana",
+    "Description": "They are the world’s largest terrestrial mammal. There are two recognized subspecies of this iconic animal: bush (or savanna) and forest. African bush elephants are the larger of the two and their tusks curve out, while their forest-dwelling cousins are darker and have tusks that are straighter and that point downward.",
+    "Habitat": "Open and closed savanna, grasslands, and arid deserts",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Elephant Shrew",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351448/Elephant_Shrew_ukdfwx.png",
+    "Scientific name": "Rhynchocyon cirnei",
+    "Description": "Elephant shrews are not, in fact, shrews. Recent evidence suggests that they are more closely related to a group of African mammals that includes elephants, sea cows, and aardvarks. Elephant shrews (also called sengis) are represented by a single family, the Macroscelididae, including four genera and 19 living species.  They take their name from their long pointed head and very long, mobile, trunk-like nose. They have rather long, legs for their size, which move in a hopping fashion like rabbits. They have a hunchbacked posture and a long, scaly tail. A gland on the underside of the tail produces a strong scent used to mark territories. This musky smell serves as a deterrent against many carnivores.",
+    "Habitat": "Dense forest to open plains",
+    "Diet": "Insectivorous"
+  },
+  {
+    "Name": "Ethiopian Wolf",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351449/Ethiopian_Wolf_s3iori.png",
+    "Scientific name": "Canis simensis",
+    "Description": "Native to Ethiopia, these long-limbed, slender canids are some of the most endangered animals in Africa. They have a black, bushy tail that can reach up to 40 centimeters in length, pointed ears, and a slender snout. They are tawny red with a white underbelly and blaze on their chests, and also have white fur on their throats, which sweeps up and covers the underside of their muzzle. The female wolves tend to be paler in color than males and are smaller overall.",
+    "Habitat": "Afro-alpine grasslands, rocky areas, and shrublands",
+    "Diet": ""
+  },
+  {
+    "Name": "Fischer's Lovebird",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351450/Fischer_s_Lovebird_trzujx.png",
+    "Scientific name": "Agapornis fischeri",
+    "Description": "The brightly colored small parrot — named after Gustav Fischer — was discovered in the 19th century. Females and males are identical in appearance and do not exhibit sexual dimorphism. They have a green back, chest, and wings. The bird’s neck is golden yellow to orange color, which deepens into a deeper orange-red on its face. The lovebird’s beak is red, and the top of the head is olive green. It may also have blue or purple-colored plumage on the tail. The remainder of the body is a vibrant green.",
+    "Habitat": "Grasslands, semi-arid woodlands, and savannas",
+    "Diet": "Mostly granivorous"
+  },
+  {
+    "Name": "Forest Elephant",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351450/Forest_Elephant_ghadir.png",
+    "Scientific name": "Loxodonta cyclotis",
+    "Description": "Long considered to be a subspecies of the African elephant, the African forest elephant is now considered by many scientists to be its own species — separate from the African savanna or bush elephant. They are smaller than the better-known savanna elephant, have tusks that are straight and point downward, unlike the savanna elephants curved tusks. Bulls sometimes have tusks that almost reach the ground. They have rounded ears while the savanna elephant’s ears are more pointed. This species of the African elephant also has five toenails on each forefoot and four on its hind feet — more similar to that of the Asian elephant.",
+    "Habitat": "Lowland, tropical rainforests",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Gelada",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351451/Gelada_qu2ekl.png",
+    "Scientific name": "Theropithecus gelada",
+    "Description": "The gelada is often referred to as the gelada baboon and the bleeding-heart baboon but is not a true baboon. These brown and grey primates are Old World monkeys that do bear some similarities to baboons. Twice the size of females, males are as big as a large dog and are equipped with vampiric canines, which they often bare at each other as a display of dominance or aggression. Both sexes have large, fluffy manes, as well as distinct, hourglass-shaped, bald patches of skin on their chests. They also have the most opposable index fingers and thumbs than any other primate.",
+    "Habitat": "Mountain grasslands, mountains",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Genet",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351452/Genet_rybmgg.png",
+    "Scientific name": "Common genet (Genetta genetta), Large-spotted genet (Genetta tigrina), Bourlon’s genet (Genetta bourloni), Forest genet (Genetta servalina), Cape genet (Genetta tigrina), etc",
+    "Description": "Genets are long, lean carnivores that appear catlike with a tail usually as long as (if not longer than) the body. There are approximately 14 species identified all of which vary in appearance and habitat. The small-spotted genet, found in more arid regions, is recognized by a prominent dorsal crest running from shoulder to tail. Its spots are round and elongated. The forest genet lacks a dorsal crest and has a coat with spaced-out, elongated spots. The large-spotted genet has a smaller dorsal crest than its small-spotted relative and is the most widely distributed of the three species. All species have retractable claws adapted to climbing and catching prey.",
+    "Habitat": "Various",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Gerenuk",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351452/Gerenuk_fy8zag.png",
+    "Scientific name": "Litocranius walleri",
+    "Description": "The gerenuk, whose name means “giraffe-necked” in Somali, is an exceptionally long-necked antelope. Their head is small for their size, but their eyes and ears are large. Only the males have horns, which are stout and heavily ringed, and they have a more heavily muscled neck than the females do. They have a coat that is brown on the upper back and lighter on the sides. The short tail looks longer as it ends in a tuft of black hair. Like many other gazelles, these large antelopes have preorbital glands in front of the eyes that emit a tar-like, scent-bearing substance they deposit on twigs and bushes to mark their territory. They also have scent glands on their knees that are covered by tufts of hair and between their split hooves.",
+    "Habitat": "Woodland forest to open plains",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Giraffe",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351453/Giraffe_ozu6w6.png",
+    "Scientific name": "Giraffa camelopardalis",
+    "Description": "They are the world’s tallest mammals. They are uniquely adapted to reach vegetation inaccessible to other herbivores. Unusually elastic blood vessels and uniquely adapted valves help offset the sudden buildup of blood (to prevent fainting) when giraffes’ heads are raised, lowered, or swung quickly. Their \"horns\" are actually knobs covered with skin and hair above the eyes that protect the head from injury. Their necks contain the same amount of vertebrae as we do (seven) except their bones are extremely elongated making their neck a long length of 2.4 meters.",
+    "Habitat": "Dense forest to open plains",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Grant's Gazelle",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351454/Grant_s_Gazelle_syjwn7.png",
+    "Scientific name": "Nanger granti",
+    "Description": "There are three subspecies of Grant’s gazelle. This species of gazelle resemble Thomson's gazelles but are noticeably larger and easily distinguished by the broad white patch on the rump that extends upward onto the back. The white patch on the Thomson's gazelle stops at the tail. Some varieties of Grant's have a black stripe on each side of the body like the Thomson's, but all have a black stripe that runs down the thigh. In others, the stripe is very light or absent. Their lyre-shaped horns are stout at the base, clearly ringed and measuring 50 to 80 centimeters long (20 to 31 inches). Females have black skin surrounding the teats with white hair on the udder. This probably helps the young recognize the source of milk. When a fawn is older and moving about with its mother, the dark stripe on the white background may serve as a beacon for it to follow.",
+    "Habitat": "Open grass plains, montane grasslands, subdesert, lowland thornbush, and savanna woodland",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Grevy's Zebra",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351454/Grevy_s_Zebra_gmdset.png",
+    "Scientific name": "Equus grevyi",
+    "Description": "The long-legged, endangered Grevy’s zebra is the largest of the wild equids. It is distinguished by its unique stripes, which are as distinctive as human fingerprints. Foals are brown with reddish-brown stripes, and gradually their coats darken to black. The Grevy’s are more closely related to the wild ass than the horse, while the plains zebra is more closely related to the horse. Grevy’s also are taller, have larger ears, and have narrower stripes than plains zebras. They are the largest of the zebra species.",
+    "Habitat": "Grasslands and savannas",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Hartebeest",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351455/Hartebeest_agzsnt.png",
+    "Scientific name": "Alcelaphus buselaphus",
+    "Description": "The hartebeest is a large, fawn-colored antelope. Their most distinctive characteristics are a steeply sloping back, long legs, and elongated snout. Despite their ungainly appearance, they are as elegant, if not more than, other antelopes. They are one of the most recent and highly evolved ungulates and are far from clumsy. In fact, they are one of the fastest antelopes and most enduring runners — capable of reaching speeds of up to 70 km/h. These qualities gave rise to their name, which means “tough ox.” Their sedentary lifestyle seems to inhibit the mixing of populations and gene flow, and as a result, there are several subspecies of hartebeest.",
+    "Habitat": "Open plains and grassland",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Hedgehog",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351456/Hedgehog_agl91w.png",
+    "Scientific name": "Atelerix albiventris",
+    "Description": "They are a small mammal with short limbs and a body low to the ground. Their most distinctive characteristic is the thousands of stiff, sharp spines — harder and sharper than those of a porcupine — that cover the animal’s back and sides, like a pincushion filled with needles.",
+    "Habitat": "A variety of climates and terrains; savanna and grassy areas with light undergrowth.",
+    "Diet": "Insectivorous"
+  },
+  {
+    "Name": "Hippopotamus",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351457/Hippopotamus_rtg5fp.png",
+    "Scientific name": "Hippopotamus amphibius: Common Hippo; Choeropsis liberiensis: Pygmy Hippo",
+    "Description": "There are two species of hippos — the large/common hippo and the smaller relative, the pygmy hippo. Hippos are the third-largest living land mammal, after elephants and white rhinos. Despite their large and bulky appearance, they have adaptations to their semi-aquatic environments allowing them to move swiftly on both water and land. Their feet have four-webbed toes that splay out to distribute weight evenly and therefore adequately support them on land, and their short legs provide powerful propulsion through the water. The pygmy hippos digits are more spread out and have less webbing and, proportionally, their legs are longer relative to its body size. They both have skin tones of purple-gray or slate color, with brownish-pink coloring around their eyes and ears. They have very thick skin that is virtually hairless except for the thick bristle-like hair on their heads and tails. The outer layers of skin are quite thin, making them prone to wounds from fighting. Their flat, paddle-like tail is used to spread excrement, which marks territory borders and indicates status of an individual. Their powerful jaws are capable of opening up to 150 degrees revealing their enormous incisors.",
+    "Habitat": "Wetlands, rivers, and swamps",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Hyena",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351458/Hyena_cihldg.png",
+    "Scientific name": "Crocuta crocuta (spotted hyena), Hyaena hyaena (striped hyena), Parahyaena brunnea (brown hyena)",
+    "Description": "The hyena (spelled “hyaena” in some parts of the world) is Africa’s most common large carnivore. There are three hyena species — spotted, brown, and striped. Spotted hyenas are the largest of the three. They are fairly large in build and have relatively short torsos with lower hindquarters, and sloping backs. They have excellent night-time vision and hearing.",
+    "Habitat": "Savannas, grasslands, woodlands, forest edges, sub deserts and mountains up to 4,000 meters (13,000 feet)",
+    "Diet": "Carnivorous"
+  },
+  {
+    "Name": "Hyrax",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351459/Hyrax_ju3unk.png",
+    "Scientific name": "Rock hyrax (Procavia capensis), Yellow-spotted hyrax (Heterohyrax brucei), Tree hyrax (Dendrohyrax dorsalis), Bush hyrax (Heterohyrax brucei)",
+    "Description": "The hyrax is also called rock rabbit or dassie, is a small furry mammal. It looks like a robust, oversized guinea pig, or a rabbit with rounded ears and no tail. Hyraxes have stumpy toes with hoof-like nails; and four toes on each front foot and three on each back foot. The longer, claw-like nails on the inside toes and the back feet are used for grooming and scratching. The bottoms of the feet have a rubbery texture to assist in climbing steep rock surfaces and trees.  Of the three hyrax species, two are known as rock (or bush) hyrax, and the third as tree hyrax. In the field, it is sometimes difficult to differentiate among them.  The rock hyrax has the widest distribution in East Africa. Its coat is yellowish — or grayish-brown — and the dorsal spot (a bare scent gland on the back covered with longer hair) is covered with black or yellow hair. Its head is more rounded than other types of hyraxes, and the nose is blunt.  The yellow-spotted hyrax, or rock rabbit, is smaller in size and has a more pointed, rodent-like nose. Generally, it has a conspicuous white patch over the eye, and its dorsal spot is whitish or yellowish. It is sometimes seen in the company of other types of hyrax, but species do not interbreed.  Tree hyraxes, unsurprisingly, spend a lot of time in trees. In some areas, they are hunted for their thick, soft, long hair. They have a white or yellow dorsal spot.",
+    "Habitat": "Dry savanna to dense rainforest to rocky outcrops",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Impala",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351459/Impala_uii5g8.png",
+    "Scientific name": "Aepyceros melampus",
+    "Description": "The impala is reddish-brown with white hair inside the ears, over each eye and on the chin, upper throat, underparts, and buttocks. A narrow black line runs along the middle of the lower back to the tail, and a vertical black stripe appears on the back of each thigh. Impalas have unique brush-like tufts of black hair that cover a scent gland located just above the heel on each hind leg. The female is similar to the male but does not have horns. The male's graceful lyre-shaped horns are about 40 to 90 centimeters long.",
+    "Habitat": "Savannas, grasslands, shrubland, and light woodlands",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Jackal",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351460/Jackal_yvseju.png",
+    "Scientific name": "Common jackal (Canis aureus), Side-striped jackal (Canis adustus), Black-backed jackal (Canis mesomelas)",
+    "Description": "The three species differ mainly in color and choice of habitat. The sandy-colored golden jackal prefers open, grassy plains, while the side-striped jackal lives along waterways with dense undergrowth and is drabber in color, has a white tip on the tail, and had indistinct stripes along the sides of the body. The black-backed jackal is recognized by the mantle of black hair on the back that contrasts with the rust-colored body. The tail is black­-tipped, as is that of the golden jackal. The black-backed jackal is usually the most frequently seen, as it is more diurnal than the other two species.",
+    "Habitat": "Open and wooded savanna, semi-desert, grasslands, shrubland",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Kob",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351460/Kob_lygqss.png",
+    "Scientific name": "Kobus kob",
+    "Description": "This antelope is similar in appearance to the impala, but the two species are not related. The Ugandan kob generally is reddish-brown, but other subspecies range from light brown to almost black. The underside of the body is white, a white ring appears around each eye, and a white patch or chevron appears on the throat; a black stripe runs down the front of each foreleg. Horns occur only in males and though lyre-shaped, they are shorter, thicker, and ringed almost to the tip.",
+    "Habitat": "Grasslands, floodplains, or savanna woodlands",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Kudu",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351460/Kudu_yd9kv5.png",
+    "Scientific name": "Greater kudu (Tragelaphus strepsiceros), Lesser kudu (Tragelaphus imberbis)",
+    "Description": "Both the greater kudu and its close cousin, the lesser kudu, have stripes and spots on the body, and most have a chevron of white hair between the eyes. Males have long, spiral horns. The greater kudu's horns are spectacular and can grow as long as 1.8 meters (about 6 feet), making 2-1/2 graceful twists.  Female greater kudus are noticeably smaller than the males. By contrast, lesser kudus are even smaller — about 90 centimeters at the shoulder. Males can weigh up to 105 kilograms (230 pounds), and females generally weigh about 22 kilograms less. Lesser kudus have smaller horns than their larger cousins and have conspicuous white patches on the upper and lower parts of the neck. Although both species are bluish-gray, grayish-brown, or rust color, the lesser kudus have five to six more lateral white stripes, for a total of 11 to 15. Both species have a crest of long hair along the spine, and greater kudus also have a fringe under the chin.",
+    "Habitat": "Dense brush or forest",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Leopard",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351460/Leopard_rgwgfl.png",
+    "Scientific name": "Panthera pardus",
+    "Description": "These large carnivores are powerfully built with long bodies, relatively short legs, and a broad head. There are nine subspecies and are distinguished by the unique characteristics of their coats, which range from tawny or light yellow in warm, dry habitats to reddish-orange in dense forests. Their coat is covered in dark, irregular spots called rosettes. These spots are circular in east African leopards, but square in southern African leopards.",
+    "Habitat": "Desert and semi-desert regions, arid regions, savanna grasslands, mountainous environments, rainforests, and occasionally urban areas.",
+    "Diet": "Carnivorous"
+  },
+  {
+    "Name": "Lesser Bush Baby",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351460/Lesser_Bush_Baby_xu46m1.png",
+    "Scientific name": "Galago senegalensis",
+    "Description": "The lesser galago, also called the lesser bush baby, is one of the smallest primates, about the size of a squirrel. Their plaintive cries and cute appearance may account for the name \"bush baby. They have large, round eyes for good night vision and bat-like, delicate ears that enable them to track insect prey in the dark. As they jump through thorn bush or thick growth, they fold the ears flat against their heads to protect them. They fold them during rest, too.",
+    "Habitat": "Woodlands and bushlands",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Lion",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351461/Lion_edgphn.png",
+    "Scientific name": "Panthera Leo",
+    "Description": "It is the second-largest living big cat after the tiger. Males are unique among the cat species for their thick mane of brown or black hair encircling their head and neck. The mane darkens with age, and the thicker and darker a mane is the healthier the cat. Both males and females roar — a sound heard as far as 8 kilometers away.",
+    "Habitat": "Grassy plains and open woodlands",
+    "Diet": "Carnivorous"
+  },
+  {
+    "Name": "Mountain Gorilla",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351464/Mountain_Gorilla_tl3kwi.png",
+    "Scientific name": "Gorilla beringei ssp. Beringei",
+    "Description": "This great ape is one of two subspecies of the eastern gorilla and one of the world's largest living primates. These apes have muscular arms, a massive chest, and broad hands and feet — and they have longer hair and shorter arms than their lowland cousins. Their thick black hair helps insulate them from cold weather.",
+    "Habitat": "Dense forest, rainforest, bamboo forest, mixed forest, subalpine grassland on the volcanic peaks",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Oryx",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351464/Oryx_gf5vht.png",
+    "Scientific name": "Oryx gazella",
+    "Description": "There are four species of oryx living in Africa and the Middle East. They are large antelopes with long, spear-like horns — with the Gemsbok (Oryx gazella) being the largest of the oryx species. They are a true desert animal, with a thick, horse-like neck; a short mane; and a compact, muscular body. A defined pattern of black markings that contrast with their white face and fawn-colored body are prominently displayed during dominance rituals to emphasize the length of their horns and the strength of their shoulders.",
+    "Habitat": "Dry plains",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Ostrich",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351464/Ostrich_asm1ei.png",
+    "Scientific name": "Struthio camelus (Common ostrich); Struthio molybdophanes (Somali ostrich)",
+    "Description": "Semiarid plains and woodlands",
+    "Habitat": "Semiarid plains and woodlands",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Pangolin",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351465/Pangolin_io1pn5.png",
+    "Scientific name": "African White-Bellied (Phataginus tricuspis) Giant Ground (Smutsia gigantea) Ground (Smutsia temminckii) Black-Bellied (Uromanis tetradactyla)",
+    "Description": "Despite its scaly appearance, this species is a mammal, not a reptile. Its scales are actually made up of keratin, which accounts for about 20 percent of its weight. It has a small head and a long, broad tail. It has no external ears, but its hearing is quite good. It also has no teeth and instead possesses a gizzard-like stomach that is specially adapted for grinding food. To assist the grinding, this scaly creature consumes small stones and sand.",
+    "Habitat": "Species dependant: Dense forest, forested savannas, swamp forests, lowland forests, and floodplain grasslands. All species are never far from a water source.",
+    "Diet": "Insectivorous"
+  },
+  {
+    "Name": "Porcupine",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351464/Porcupine_qw4spn.png",
+    "Scientific name": "Hystrix cristata (Crested Porcupine); Atherurus africanus (African Brush-tailed Porcupine); Hystrix africaeaustralis (Cape Porcupine)",
+    "Description": "The word porcupine means “quill pig” in Latin; however, porcupines are large rodents and have no relation to pigs. Porcupines are the largest and heaviest of all African rodents. The head is roundish and rather domed, with a blunt muzzle and small eyes and ears. The legs are short and sturdy, and each foot has five toes, all equipped with powerful claws. Their most recognizable feature is, of course, its quills. Quill length varies on different parts of the body, ranging from 2.5 to 30.5 centimeters (1 to 12 inches). Usually, the quills lie flat against the body, but if danger threatens, they raise and spread them. Scales on quill tips lodge in the skin like fishhooks and are difficult to pull out. New quills grow in to replace lost ones.",
+    "Habitat": "Hilly, rocky country, woodland savanna",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Honey Badger",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351459/Honey_Badger_nmsfin.png",
+    "Scientific name": "Mellivora capensis",
+    "Description": "Ratels, also known as honey badgers, are muscular and compact, have a thick skull, a well-developed neck and shoulders, and strong forelegs armed with massive claws for digging. The striking pattern of the black lower body and white upper-body fur extends to the tail. It has internal ears that can be closed to keep out dirt while digging.",
+    "Habitat": "Dense forest to open plains",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Rhinoceros",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351468/Rhinoceros_f1yzpr.png",
+    "Scientific name": "Black: Diceros bicornis White: Ceratotherium simum",
+    "Description": "Rhinos may look like prehistoric creatures, and they do date back millions of years to the Miocene era, but they are also mammals like us. There are two species of African rhinos, the white rhino and black rhino, and each is distinct in its own way. The white, or square-lipped, rhino derives its name from the Dutch word “weit,” meaning wide. It is actually gray in color and has a hump on its neck and a long face. The black, or hooked-lipped, rhino has a thick, hairless gray hide. Both rhinos have two horns.",
+    "Habitat": "Grassland and open savanna",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Roan Antelope",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351465/Roan_Antelope_buip1m.png",
+    "Scientific name": "Hippotragus equinus",
+    "Description": "The roan antelope is one of Africa’s largest bovids, only exceeded in size by the African buffalo and eland. It has a grey or brown coat, a black-and-white clown-like facemask — that is darker in males than females — and long, tasseled ears. Both sexes have backward-curving horns, although they are shorter in the females.",
+    "Habitat": "Savannas, woodlands, and grasslands",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Sable",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351466/Sable_um8gvi.png",
+    "Scientific name": "Hippotragus niger",
+    "Description": "The sable is a rotund, barrel-chested antelope with a short neck, long face, and dark mane. Both males and females boast impressive ringed horns that rise vertically and curve backward. When they arch their necks and stand with their heads held high and tails outstretched, they resemble horses. This flexed-neck position makes sables appear larger than they really are. The males maintain this position even when they gallop, as the arched neck is an important manifestation of dominance.  As they grow older, sables change color. Calves are born reddish-brown, with virtually no markings. As they age, the white markings appear, and the rest of the coat gets darker — the older the animal, the more striking the contrast.",
+    "Habitat": "Savanna woodlands",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Serval",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351467/Serval_w5ggql.png",
+    "Scientific name": "Leptailurus serval",
+    "Description": "Servals are medium-sized wild cats with tawny, black-spotted coats and long necks and long legs that allow them to see over savanna grasses. They also have large ears and an acute sense of hearing.",
+    "Habitat": "Savannas",
+    "Diet": "Carnivorous"
+  },
+  {
+    "Name": "Sitatunga",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351468/Sitatunga_vlg2le.png",
+    "Scientific name": "Tragelaphus spekii",
+    "Description": "The sitatunga is a rare swamp-dwelling antelope. It is distinguished by its long, splayed hooves. These hooves make them clumsy and vulnerable on firm terrain but well-adapted for walking through muddy, vegetated swamplands. Their shaggy, oily coat is another adaptation to an aquatic habitat. The males' coats are grayish-brown, while the females' are a reddish-chocolate brown, with six to eight vertical white stripes on the body. Males are also considerably larger than females and have long, twisting horns.",
+    "Habitat": "Aquatic, wetlands",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Springhare",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351468/Springhare_i4hxtj.png",
+    "Scientific name": "Pedetes capensis",
+    "Description": "This unusual rodent species, which appears to be a cross between a kangaroo and a rabbit, has caused scientists much confusion. Springhares were once grouped with jerboas (jumping rodents), then with porcupines, then with scaly-tailed squirrels, until finally they were allotted their own family.  Their large back legs enable them to make gigantic leaps, using their long tail for balance. Their much smaller forelimbs have very sharp claws, which they use to dig. The springhare also possesses a flap of skin at the base of the ear that can be completely closed to prevent sand from getting into the inner ear.",
+    "Habitat": "Dry savannas",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Thomson's Gazelle",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351467/Thomson_s_Gazelle_xotpp1.png",
+    "Scientific name": "Gazella thomsonii",
+    "Description": "These small gazelles, named for researcher Joseph Thomson, have light-brown coats with dark stripes running down their sides, a white patch on their rumps extending underneath the tail, and ridged horns that curve backward. Females may have shorter, smoother, and slimmer horns than males or none at all. Grant’s gazelles are sometimes confused with Thomson’s. However, Thomson’s is distinguished from Grant’s by its smaller size and the white patch on its rump. On Grant’s gazelles, the patch always extends above the tail.",
+    "Habitat": "Open plains and grassland",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Topi",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351468/Topi_hhnthc.png",
+    "Scientific name": "Damaliscus lunatus",
+    "Description": "They are medium­-sized antelopes with a striking reddish-brown to purplish-red coat. Distinct black patches appear on their face, their upper forelegs, and on their hips and thighs. To complete their singular appearance, the topi's yellowish-tan legs look like they are encased in stockings.  Although not quite as large as their relative the hartebeest (kongoni), topis have a similar body shape. However, it does not have such a long, narrow head, nor are they as high at the shoulder. Female topis are usually lighter in color than the males. Both sexes have thick, heavily ringed, lyre-shaped horns that are about  30 to 40 centimeters long (11 to 16 inches). Topis have good sight and hearing and can run quite fast with a bounding gait.",
+    "Habitat": "Floodplains and grasslands",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Vervet Monkey",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351473/Warthog_blr9qz.png",
+    "Scientific name": "Cercopithecus aethiops",
+    "Description": "The vervet is a small, black-faced monkey, common in East Africa. There are several subspecies of vervet monkeys, but, generally, the body is a greenish-olive or silvery-gray. The face, ears, hands, feet, and the tip of the tail are black, but a conspicuous white band on the forehead blends in with the short whiskers. The males are slightly larger than the females and easily recognized by a turquoise-blue scrotum and red penis. The vervet is classified as a medium- to a large-sized monkey. The tail is usually held up, with the tip curving downward, and the arms and legs are approximately equal lengths.",
+    "Habitat": "Woodland, savanna, high bush",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Vulture",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351469/Vulture_vwgbli.png",
+    "Scientific name": "Egyptian Vulture: Neophron percnopterus; Hooded Vulture: Necrosyrtes monachus; White-backed Vulture: Gyps africanus; Rüppell’s Vulture: Gyps reuppelli",
+    "Description": "Vultures vary in size and appearance depending on their species. Colors range from white to brown to black with white accents, and many species have a bare crown, face and neck, accompanied by a neat or scraggly ruff of feathers.  The IUCN Red List identifies two species, the Egyptian vulture and the lappet-faced vulture, as endangered. Four species are critically endangered: the hooded vulture, the white-headed vulture, Rüppell's vulture, and the white-backed vulture.",
+    "Habitat": "Mountains, savanna, woodlands, desert",
+    "Diet": "Mostly carnivorous"
+  },
+  {
+    "Name": "Warthog",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351473/Warthog_blr9qz.png",
+    "Scientific name": "Phacochoerus aethiopicus (desert/cape warthog); Phacochoerus africanus (common warthog)",
+    "Description": "The warthog is a tough, sturdy animal. Males weigh 9 to 23 kilograms (20 to 50 pounds) more than females, but both are distinguished by disproportionately large heads and “warts” — thick protective pads that appear on both sides of the head. Their large tusks are unusual: the two upper tusks emerge from the sides of the snout to form a semicircle; the lower tusks, at the base of the uppers, are worn to a sharp-cutting edge. Sparse bristles cover their body, and longer bristles form a mane from the top of the head down the spine to the middle of the back. Their long tail ends with a tuft of bristles. Warthogs characteristically carry their tails upright when they run, the tuft waving like a tiny flag.",
+    "Habitat": "Savanna",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Waterbuck",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351471/Waterbuck_azkt1z.png",
+    "Scientific name": "Waterbuck (Kobus ellipsiprymnus); Common waterbuck (Kobus ellipsiprymnus ssp.ellipsiprymnus); Defassa waterbuck (Kobus ellipsiprymnus ssp. defassa)",
+    "Description": "These antelopes are large, robust animals; males are generally about 25 percent larger than the females. They have large, rounded ears and white patches above the eyes, around the nose and mouth, and on the throat. Only the males have horns, which are prominently ringed and as long as 100 centimeters (40 inches). The horns are widely spaced and curve gracefully back and up. They are sometimes used with lethal results when males fight one another over territories.  They have a shaggy brown­-gray coat that emits a smelly, oily secretion thought to be for waterproofing. In East Africa, two types occur: the common waterbuck and the defassa waterbuck, distinguished only by the white pattern on the rump. The common waterbuck has a conspicuous white ring encircling a dark rump, while the defassa has wide white patches on either side of the rump.",
+    "Habitat": "Savanna grasslands, riverine forests, woodlands",
+    "Diet": "Herbivorous"
+  },
+  {
+    "Name": "Wattled Crane",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351471/Wattled_Crane_vo76ce.png",
+    "Scientific name": "Bugeranus carunculatus",
+    "Description": "The wattled crane is a large bird with a long white neck, gray body, black undersides, and a bare red face with a black “cap.” Their name comes from the white wattles that dangle from its throat. The crane’s secondary, inner-wing feathers are elongated and look like a tail when the crane is standing.",
+    "Habitat": "Open wetlands, moist grasslands, and seasonal floodplains",
+    "Diet": "Omnivorous"
+  },
+  {
+    "Name": "Wildebeest",
+    "URL": "https://res.cloudinary.com/dvpva0mcr/image/upload/v1785351476/Wildebeest_eldin6.png",
+    "Scientific name": "Connochaetes taurinus",
+    "Description": "Also known as the gnu, the wildebeest is a member of the antelope family. They have a large, box-like head with curving horns. The front end of their body is heavily built, while the hindquarters are slender with spindly legs. They have a gray coat and a black mane as well as a beard that can be black or white. There are several races of wildebeest. The species forming the large herds of the Serengeti-Mara ecosystem of Kenya and Tanzania is known as the western white-bearded wildebeest, while the eastern white-bearded races inhabit Kenya and Tanzania east of the Gregory Rift. The brindled, or blue, race occurs south of the Zambezi River.",
+    "Habitat": "Open woodlands, open grassy plains",
+    "Diet": "Herbivorous"
+  }
+]
