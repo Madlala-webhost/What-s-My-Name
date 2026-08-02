@@ -12,17 +12,58 @@ app.use(bodyParser.json());
 app.set("view engine", "ejs");
 
 //Route to render the main page
+
 app.get("/", async (req, res) => {
-    try {
-        const response = await axios.get(`${API_URL}/quiz`);
-        const { quizAnswer, randomNames } = response.data;
-        res.render("index", { quizAnswer, randomNames });
-    } catch (error) {
-        console.error("Error rendering main page:", error);
-        res.status(500).send("Internal Server Error");
-    }
+  try {
+    res.render("index.ejs", {
+      quizAnswer: null,
+      randomNames: null,
+      quizStarted: false,
+      gameOver: false,
+      counter: 0,
+    });
+  } catch (error) {
+    console.error("Error rendering main page:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/check-answer", async (req, res) => {
+  try {
+    const userAnswer = req.body.userAnswer;
+    const result = await axios.post(`${API_URL}/check-answer`, {
+      userAnswer,
+    });
+    res.render("index.ejs", {
+      quizAnswer: result.data.quizAnswer,
+      randomNames: result.data.randomNames,
+      quizStarted: true,
+      gameOver: result.data.gameOver,
+      counter: result.data.counter,
+    });
+  } catch (error) {
+    console.error("Error checking answer:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/start-quiz", async (req, res) => {
+  try {
+    const response = await axios.post(`${API_URL}/start-quiz`);
+    const { quizAnswer, randomNames } = response.data;
+    res.json({
+      quizAnswer,
+      randomNames,
+      quizStarted: true,
+      gameOver: false,
+      counter: 0,
+    });
+  } catch (error) {
+    console.error("Error starting quiz:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
