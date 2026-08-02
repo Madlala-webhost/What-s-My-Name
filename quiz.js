@@ -8,6 +8,14 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebaseConfig.js";
 import express from "express";
+import bodyParser from "body-parser";
+
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+//middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const animalData = [];
 
@@ -40,9 +48,33 @@ async function getRandomAnimal(animalData) {
   console.log(randomNames);
 }
 
-async function getQuiz() {
+async function startQuiz() {
+    let animalData = [];
+    let quizAnswer = null;
+    let counter = 0;
+    let gameOver = false;
   await getAnimalByName();
-  await getRandomAnimal(animalData);
+  const { quizAnswer, randomNames } = await getRandomAnimal(animalData);
+  return { quizAnswer, randomNames };
 }
 
-getQuiz().catch(console.error);
+
+app.get("/quiz", async (req, res) => {
+  try {
+    if(req.query.start === "true") {
+      const { quizAnswer, randomNames } = await startQuiz();
+      res.json({ quizAnswer, randomNames });
+    } else {
+      res.status(400).send("Bad Request");
+    }
+  } catch (error) {
+    console.error("Error starting quiz:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
