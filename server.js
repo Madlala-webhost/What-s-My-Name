@@ -49,17 +49,35 @@ app.post("/check-answer", async (req, res) => {
 
 app.post("/start-quiz", async (req, res) => {
   try {
-    const response = await axios.post(`${API_URL}/start-quiz`);
-    const { quizAnswer, randomNames } = response.data;
-    res.json({
+    const response = await axios.post(`${API_URL}/start-quiz`, {
+      quizStarted: true,
+    });
+    const { quizAnswer, randomNames, counter, gameOver } = response.data;
+    res.render("index.ejs", {
       quizAnswer,
       randomNames,
       quizStarted: true,
+      gameOver,
+      counter,
+    });
+  } catch (error) {
+    console.error("Error starting quiz:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/reset-quiz", async (req, res) => {
+  try {
+    await axios.post(`${API_URL}/reset-quiz`);
+    res.render("index.ejs", {
+      quizAnswer: null,
+      randomNames: null,
+      quizStarted: false,
       gameOver: false,
       counter: 0,
     });
   } catch (error) {
-    console.error("Error starting quiz:", error);
+    console.error("Error resetting quiz:", error);
     res.status(500).send("Internal Server Error");
   }
 });
