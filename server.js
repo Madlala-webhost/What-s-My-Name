@@ -36,7 +36,7 @@ app.post("/check-answer", async (req, res) => {
     });
     res.render("index.ejs", {
       quizAnswer: result.data.quizAnswer,
-      randomNames: result.data.randomNames,
+      namesChoice: result.data.namesChoice,
       quizStarted: true,
       gameOver: result.data.gameOver,
       counter: result.data.counter,
@@ -52,10 +52,10 @@ app.post("/start-quiz", async (req, res) => {
     const response = await axios.post(`${API_URL}/start-quiz`, {
       quizStarted: true,
     });
-    const { quizAnswer, randomNames, counter, gameOver } = response.data;
+    const { quizAnswer, namesChoice, counter, gameOver } = response.data;
     res.render("index.ejs", {
       quizAnswer,
-      randomNames,
+      namesChoice,
       quizStarted: true,
       gameOver,
       counter,
@@ -71,7 +71,7 @@ app.post("/reset-quiz", async (req, res) => {
     await axios.post(`${API_URL}/reset-quiz`);
     res.render("index.ejs", {
       quizAnswer: null,
-      randomNames: null,
+      namesChoice: null,
       quizStarted: false,
       gameOver: false,
       counter: 0,
