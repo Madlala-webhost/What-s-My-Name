@@ -99,6 +99,8 @@
               <h2>Press To Start</h2>
             </button>
           </form>
+          <% } else if (locals.gameOver) { %>
+            <h2 style="color: red;">Game Over!</h2>
           <% } else { %>
             <h2>Quiz Started!</h2>
           <% } %>
@@ -123,7 +125,7 @@
         </div>
         <% } %>
       <div class="text-center mt-3 d-flex justify-content-center col-12">
-        <% if (locals.quizStarted) { %>
+        <% if (locals.quizStarted && !locals.gameOver) { %>
         <div class="btn btn-primary col-5">Reset</div>
         <div class="btn btn-secondary col-5 offset-1">Skip</div>
         <% } %>
