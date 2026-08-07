@@ -52,13 +52,14 @@ app.post("/start-quiz", async (req, res) => {
     const response = await axios.post(`${API_URL}/start-quiz`, {
       quizStarted: true,
     });
-    const { quizAnswer, namesChoice, counter, gameOver } = response.data;
+    const { quizAnswer, namesChoice, counter, gameOver, isCorrect } = response.data;
     res.render("index.ejs", {
       quizAnswer,
       namesChoice,
       quizStarted: true,
       gameOver,
       counter,
+      isCorrect,
     });
   } catch (error) {
     console.error("Error starting quiz:", error);
@@ -75,6 +76,7 @@ app.post("/reset-quiz", async (req, res) => {
       quizStarted: false,
       gameOver: false,
       counter: 0,
+      isCorrect: false,
     });
   } catch (error) {
     console.error("Error resetting quiz:", error);

@@ -17,6 +17,7 @@ const state = {
   gameOver: false,
   quizStarted: false,
   namesChoice: [],
+  isCorrect: false,
 };
 
 async function shuffleNames() {
@@ -94,10 +95,11 @@ async function checkAnswer(userAnswer) {
       quizAnswer: newQuizAnswer,
       namesChoice,
       counter: state.counter,
+      isCorrect: true,
     };
   } else {
     state.gameOver = true;
-    return { correct: false, gameOver: true };
+    return { correct: false, gameOver: true, isCorrect: false, quizAnswer: state.quizAnswer, namesChoice: state.namesChoice, counter: state.counter };
   }
 }
 
@@ -125,8 +127,8 @@ app.post("/start-quiz", async (req, res) => {
       return res.status(400).json({ message: "Quiz already started." });
     }
 
-    const { quizAnswer, namesChoice, counter, gameOver } = await startQuiz(); 
-    res.json({ quizAnswer, namesChoice, counter, gameOver });
+    const { quizAnswer, namesChoice, counter, gameOver, isCorrect } = await startQuiz(); 
+    res.json({ quizAnswer, namesChoice, counter, gameOver, isCorrect });
   } catch (error) {
     console.error("Error starting quiz:", error);
     res.status(500).send("Internal Server Error");
@@ -137,7 +139,7 @@ app.post("/check-answer", async (req, res) => {
   try {
     const userAnswer = req.body.userAnswer;
     const result = await checkAnswer(userAnswer);
-    const { quizAnswer, namesChoice, counter, gameOver, quizStarted } = result;
+    const { quizAnswer, namesChoice, counter, gameOver, isCorrect } = result;
     res.json(result);
   } catch (error) {
     console.error("Error checking answer:", error);
