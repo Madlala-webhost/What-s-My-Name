@@ -93,7 +93,7 @@
 
       <div class="body text-center d-flex justify-content-center col-12">
         <div class="card mb-3 bg-light rounded p-3 col-5 justify-content-center align-items-center">
-          <% if (!locals.quizStarted) { %>
+          <% if (!locals.quizStarted && !locals.gameOver && !locals.correct) { %>
           <form action="/start-quiz" method="post">
             <button type="submit" class="btn btn-warning" name="quizStarted" value="true">
               <h2>Press To Start</h2>
@@ -107,7 +107,13 @@
                 <h2>Play Again</h2>
               </button>
             </form>
-          <% } else { %>
+            <%} else if (locals.correct) { %>
+            <h2 style="color: green;">Correct!</h2>
+            <h3><%= locals.quizAnswer[0].Name %></h3>
+            <h4>Scientific Name: <%= locals.quizAnswer[0].ScientificName %></h4>
+            <h4>Description: <%= locals.quizAnswer[0].Description %></h4>
+            <h4>Habitat: <%= locals.quizAnswer[0].Habitat %></h4>
+          <% } else if (locals.quizStarted && !locals.correct) { %>
             <h2>Quiz Started!</h2>
           <% } %>
         </div>
@@ -120,7 +126,7 @@
       
         
         <div class="card mb-3 bg-light rounded p-3 col-12 justify-content-center align-items-center">
-          <% if(locals.quizStarted && locals.namesChoice && !locals.isCorrect) { %>
+          <% if(locals.quizStarted && locals.namesChoice && !locals.correct) { %>
           <form action="/check-answer" method="post">
             <% locals.namesChoice.forEach(function(name, index) { %>
               <button type="submit" class="btn btn-warning mb-2" name="userAnswer" value="<%= name %>" >
@@ -130,12 +136,25 @@
           </form>
         </div>
         <% } %>
+        <% if(!locals.gameOver) { %>
       <div class="text-center mt-3 d-flex justify-content-center col-12">
-        <% if (locals.quizStarted && !locals.gameOver) { %>
-        <div class="btn btn-primary col-5">Reset</div>
-        <div class="btn btn-secondary col-5 offset-1">Skip</div>
+        <% if (locals.quizStarted && !locals.correct) { %>
+        <form action="/reset-quiz" method="post" class="col-5">
+          <button type="submit" class="btn btn-danger col-12">Reset</button>
+        </form>
+        <form action="/next-question" method="post" class="col-5">
+          <button type="submit" class="btn btn-primary col-12">Skip</button>
+        </form>
+      
+        <% } else if (locals.quizStarted && locals.correct) { %>
+        <form action="/next-question" method="post" class="col-5 offset-1">
+          <button type="submit" class="btn btn-primary col-12">Next</button>
+        </form>
         <% } %>
+
+    
       </div>
+        <% } %>
     </div>
     
     <footer

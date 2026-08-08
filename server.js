@@ -21,6 +21,7 @@ app.get("/", async (req, res) => {
       quizStarted: false,
       gameOver: false,
       counter: 0,
+      correct: false,
     });
   } catch (error) {
     console.error("Error rendering main page:", error);
@@ -40,7 +41,9 @@ app.post("/check-answer", async (req, res) => {
       quizStarted: true,
       gameOver: result.data.gameOver,
       counter: result.data.counter,
+      correct: result.data.correct,
     });
+    console.log("Result:", result.data);
   } catch (error) {
     console.error("Error checking answer:", error);
     res.status(500).send("Internal Server Error");
@@ -49,20 +52,38 @@ app.post("/check-answer", async (req, res) => {
 
 app.post("/start-quiz", async (req, res) => {
   try {
-    const response = await axios.post(`${API_URL}/start-quiz`, {
+    const result = await axios.post(`${API_URL}/start-quiz`, {
       quizStarted: true,
     });
-    const { quizAnswer, namesChoice, counter, gameOver, isCorrect } = response.data;
+    const { quizAnswer, namesChoice, counter, gameOver, correct } = result.data;
     res.render("index.ejs", {
-      quizAnswer,
-      namesChoice,
+      quizAnswer: result.data.quizAnswer,
+      namesChoice: result.data.namesChoice,
       quizStarted: true,
-      gameOver,
-      counter,
-      isCorrect,
+      gameOver: result.data.gameOver,
+      counter: result.data.counter,
+      correct: result.data.correct,
     });
   } catch (error) {
     console.error("Error starting quiz:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/next-question", async (req, res) => {
+  try {
+    const result = await axios.post(`${API_URL}/next-question`);
+    const { quizAnswer, namesChoice, counter, gameOver, correct } = result.data;
+    res.render("index.ejs", {
+      quizAnswer:result.data.quizAnswer,
+      namesChoice:result.data.namesChoice,
+      quizStarted: true,
+      gameOver: result.data.gameOver,
+      counter: result.data.counter,
+      correct: result.data.correct,
+    });
+  } catch (error) {
+    console.error("Error fetching next question:", error);
     res.status(500).send("Internal Server Error");
   }
 });
@@ -76,7 +97,7 @@ app.post("/reset-quiz", async (req, res) => {
       quizStarted: false,
       gameOver: false,
       counter: 0,
-      isCorrect: false,
+      correct: false,
     });
   } catch (error) {
     console.error("Error resetting quiz:", error);

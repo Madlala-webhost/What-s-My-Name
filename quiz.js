@@ -17,7 +17,7 @@ const state = {
   gameOver: false,
   quizStarted: false,
   namesChoice: [],
-  isCorrect: false,
+ correct: false,
 };
 
 async function shuffleNames() {
@@ -44,6 +44,8 @@ async function getAnimalByName() {
 }
 
 async function getRandomAnimal() {
+  state.quizAnswer = null;
+  state.correct = false;
   state.namesChoice = [];
   const answerGenerator = Math.floor(Math.random() * state.animalData.length);
 
@@ -88,18 +90,24 @@ async function checkAnswer(userAnswer) {
 
   if (userAnswer === state.quizAnswer[0].Name) {
     state.counter++;
-    const { quizAnswer: newQuizAnswer, namesChoice } = await getRandomAnimal();
+    state.correct = true;
+
     return {
-      correct: true,
-      gameOver: false,
-      quizAnswer: newQuizAnswer,
-      namesChoice,
+      quizAnswer: state.quizAnswer,
+      namesChoice: state.namesChoice,
       counter: state.counter,
-      isCorrect: true,
+      correct: state.correct,
     };
   } else {
     state.gameOver = true;
-    return { correct: false, gameOver: true, isCorrect: false, quizAnswer: state.quizAnswer, namesChoice: state.namesChoice, counter: state.counter };
+    return {
+      correct: false,
+      gameOver: true,
+     
+      quizAnswer: state.quizAnswer,
+      namesChoice: state.namesChoice,
+      counter: state.counter,
+    };
   }
 }
 
@@ -109,6 +117,8 @@ async function resetQuiz() {
   state.quizStarted = false;
   state.quizAnswer = null;
   state.animalData = [];
+  state.namesChoice = [];
+  state.correct = false;
 }
 
 app.post("/reset-quiz", async (req, res) => {
@@ -127,8 +137,8 @@ app.post("/start-quiz", async (req, res) => {
       return res.status(400).json({ message: "Quiz already started." });
     }
 
-    const { quizAnswer, namesChoice, counter, gameOver, isCorrect } = await startQuiz(); 
-    res.json({ quizAnswer, namesChoice, counter, gameOver, isCorrect });
+    const { quizAnswer, namesChoice, counter, gameOver, correct } = await startQuiz(); 
+    res.json({ quizAnswer, namesChoice, counter, gameOver, correct });
   } catch (error) {
     console.error("Error starting quiz:", error);
     res.status(500).send("Internal Server Error");
@@ -138,11 +148,24 @@ app.post("/start-quiz", async (req, res) => {
 app.post("/check-answer", async (req, res) => {
   try {
     const userAnswer = req.body.userAnswer;
-    const result = await checkAnswer(userAnswer);
-    const { quizAnswer, namesChoice, counter, gameOver, isCorrect } = result;
-    res.json(result);
+    const  { quizAnswer, namesChoice, counter, gameOver, correct } = await checkAnswer(userAnswer);
+    res.json({ quizAnswer, namesChoice, counter, gameOver, correct });
+    console.log("Result:", { quizAnswer, namesChoice, counter, gameOver, correct });
   } catch (error) {
     console.error("Error checking answer:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/next-question", async (req, res) => {
+  try {
+    if (!state.quizStarted) {
+      return res.status(400).json({ message: "Quiz has not started yet." });
+    }
+    const { quizAnswer, namesChoice, counter, gameOver, correct } = await getRandomAnimal();
+    res.json({ quizAnswer, namesChoice, counter, gameOver, correct });
+  } catch (error) {
+    console.error("Error fetching next question:", error);
     res.status(500).send("Internal Server Error");
   }
 });
