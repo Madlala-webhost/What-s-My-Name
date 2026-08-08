@@ -92,7 +92,7 @@
       </div>
 
       <div class="body text-center d-flex justify-content-center col-12">
-        <div class="card mb-3 bg-light rounded p-3 col-5 justify-content-center align-items-center">
+        <div class="card mb-3 bg-light rounded p-3 col-8 justify-content-center align-items-center">
           <% if (!locals.quizStarted && !locals.gameOver && !locals.correct) { %>
           <form action="/start-quiz" method="post">
             <button type="submit" class="btn btn-warning" name="quizStarted" value="true">
@@ -110,15 +110,15 @@
             <%} else if (locals.correct) { %>
             <h2 style="color: green;">Correct!</h2>
             <h3><%= locals.quizAnswer[0].Name %></h3>
-            <h4>Scientific Name: <%= locals.quizAnswer[0].ScientificName %></h4>
-            <h4>Description: <%= locals.quizAnswer[0].Description %></h4>
-            <h4>Habitat: <%= locals.quizAnswer[0].Habitat %></h4>
+            <h4>Scientific Name: </h4><p><%= locals.quizAnswer[0].ScientificName %></p>
+            <h4>Description: </h4><p><%= locals.quizAnswer[0].Description %></p>
+            <h4>Habitat: </h4><p><%= locals.quizAnswer[0].Habitat %></p>
           <% } else if (locals.quizStarted && !locals.correct) { %>
             <h2>Quiz Started!</h2>
           <% } %>
         </div>
         <% if(locals.quizStarted && locals.quizAnswer) { %>
-        <div class="card mb-3 bg-light rounded p-3 col-5 offset-1"><img style="height: 300px; width: auto; border-radius: 10%;" src="<%= locals.quizAnswer[0].URL %>" alt="<%= locals.quizAnswer[0].Name %>" class="img-fluid" /></div>
+        <div class="card mb-3 bg-light rounded p-3 col-5 offset-1 justify-content-center align-item-center"><img style="height: 300px; width: auto; border-radius: 10%;" src="<%= locals.quizAnswer[0].URL %>" alt="<%= locals.quizAnswer[0].Name %>" class="img-fluid" /></div>
         
         <% } %>
       </div> 
