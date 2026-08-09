@@ -26,8 +26,11 @@
     <style>
       body {
         font-family: "DynaPuff", cursive;
-      
       }
+      .hover:hover {
+        transform: scale(1.1);
+      }
+    </style>
     </style>
   </head>
   <body>
@@ -73,9 +76,9 @@
       </div>
     </nav>
     <div
-      class="container mt-5 text-center"
+      class="container mt-5 text-center h-100"
       style="
-        height: 650px;
+        
         justify-content: center;
         align-items: center;
         width: 50%;
@@ -129,7 +132,7 @@
           <% if(locals.quizStarted && locals.namesChoice && !locals.correct) { %>
           <form action="/check-answer" method="post">
             <% locals.namesChoice.forEach(function(name, index) { %>
-              <button type="submit" class="btn btn-warning mb-2" name="userAnswer" value="<%= name %>" >
+              <button type="submit" class="btn btn-warning mb-2 hover" name="userAnswer" value="<%= name %>" >
                 <h2><%= name %></h2>
               </button>
             <% }); %>
@@ -140,15 +143,15 @@
       <div class="text-center mt-3 d-flex justify-content-center col-12">
         <% if (locals.quizStarted && !locals.correct) { %>
         <form action="/reset-quiz" method="post" class="col-5">
-          <button type="submit" class="btn btn-danger col-12">Reset</button>
+          <button type="submit" class="btn btn-danger col-12 hover">Reset</button>
         </form>
         <form action="/next-question" method="post" class="col-5">
-          <button type="submit" class="btn btn-primary col-12">Skip</button>
+          <button type="submit" class="btn btn-primary col-12 hover">Skip</button>
         </form>
       
         <% } else if (locals.quizStarted && locals.correct) { %>
         <form action="/next-question" method="post" class="col-5 offset-1">
-          <button type="submit" class="btn btn-primary col-12">Next</button>
+          <button type="submit" class="btn btn-primary col-12 hover">Next</button>
         </form>
         <% } %>
 
