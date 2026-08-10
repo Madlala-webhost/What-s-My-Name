@@ -135,12 +135,59 @@ async function resetQuiz() {
   state.correct = false;
 }
 
+async function skipQuestion() {
+  if (!state.quizStarted) {
+    return {
+      message: "Quiz has not started yet.",
+    };
+  }
+
+  const { quizAnswer, namesChoice } = await getRandomAnimal();
+  state.correct = false; // Reset correct to false when skipping a question
+  return {
+    quizAnswer: state.quizAnswer,
+    correct: state.correct,
+    namesChoice: state.namesChoice,
+    counter: state.counter,
+    gameOver: state.gameOver,
+  };
+}
+
+async function nextQuestion() {
+  if (!state.quizStarted) {
+    return {
+      message: "Quiz has not started yet.",
+    };
+  }
+
+  const { quizAnswer, namesChoice } = await getRandomAnimal();
+  state.correct = false; // Reset correct to false when moving to the next question
+  return {
+    quizAnswer: state.quizAnswer,
+    correct: state.correct,
+    namesChoice: state.namesChoice,
+    counter: state.counter,
+    gameOver: state.gameOver,
+  };
+}
+
 app.post("/reset-quiz", async (req, res) => {
   try {
     await resetQuiz();
     res.json({ message: "Quiz reset successfully." });
   } catch (error) {
     console.error("Error resetting quiz:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/skip-question", async (req, res) => {
+  try {
+    const { quizAnswer, namesChoice, counter, gameOver, correct } =
+      await skipQuestion();
+    res.json({ quizAnswer, namesChoice, counter, gameOver, correct });
+  } catch (error) {
+    console.error("Error skipping question:", error);
     res.status(500).send("Internal Server Error");
   }
 });
@@ -185,7 +232,7 @@ app.post("/next-question", async (req, res) => {
       return res.status(400).json({ message: "Quiz has not started yet." });
     }
     const { quizAnswer, namesChoice, counter, gameOver, correct } =
-      await getRandomAnimal();
+      await nextQuestion();
     res.json({ quizAnswer, namesChoice, counter, gameOver, correct });
   } catch (error) {
     console.error("Error fetching next question:", error);
