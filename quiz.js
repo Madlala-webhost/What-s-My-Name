@@ -134,6 +134,22 @@ async function resetQuiz() {
   state.namesChoice = [];
   state.correct = false;
 }
+async function gameOver(GameOver) {
+  if(GameOver){
+
+  state.gameOver =GameOver;
+
+  state.quizStarted = false;
+  state.correct = false;
+
+  }
+  return {
+    message: "Game over.",
+    counter: state.counter,
+    quizAnswer: state.quizAnswer,
+    gameOver: state.gameOver,
+  };
+}
 
 async function skipQuestion() {
   if (!state.quizStarted) {
@@ -150,6 +166,7 @@ async function skipQuestion() {
     namesChoice: state.namesChoice,
     counter: state.counter,
     gameOver: state.gameOver,
+
   };
 }
 
@@ -239,6 +256,18 @@ app.post("/next-question", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+app.post("/game-over", async (req, res) => {
+  try {
+    
+    const { quizAnswer, gameOver: gameOverStatus, counter, correct } = await gameOver(true);
+    res.json({ quizAnswer, gameOver: gameOverStatus, counter, correct });
+  } catch (error) {
+    console.error("Error setting game over:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
