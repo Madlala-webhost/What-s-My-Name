@@ -35,13 +35,14 @@ app.post("/check-answer", async (req, res) => {
     const result = await axios.post(`${API_URL}/check-answer`, {
       userAnswer,
     });
+    const { quizAnswer, namesChoice, counter, gameOver, correct } = result.data;
     res.render("index.ejs", {
-      quizAnswer: result.data.quizAnswer,
-      namesChoice: result.data.namesChoice,
+      quizAnswer: quizAnswer,
+      namesChoice: namesChoice,
       quizStarted: true,
-      gameOver: result.data.gameOver,
-      counter: result.data.counter,
-      correct: result.data.correct,
+      gameOver: gameOver,
+      counter: counter,
+      correct: correct,
     });
     console.log("Result:", result.data);
   } catch (error) {
@@ -57,12 +58,12 @@ app.post("/start-quiz", async (req, res) => {
     });
     const { quizAnswer, namesChoice, counter, gameOver, correct } = result.data;
     res.render("index.ejs", {
-      quizAnswer: result.data.quizAnswer,
-      namesChoice: result.data.namesChoice,
+      quizAnswer: quizAnswer,
+      namesChoice: namesChoice,
       quizStarted: true,
-      gameOver: result.data.gameOver,
-      counter: result.data.counter,
-      correct: result.data.correct,
+      gameOver: gameOver,
+      counter: counter,
+      correct: correct,
     });
   } catch (error) {
     console.error("Error starting quiz:", error);
@@ -128,12 +129,12 @@ try{
   const result = await axios.post(`${API_URL}/skip-question`);
   const { quizAnswer, namesChoice, counter, gameOver, correct } = result.data;
   res.render("index.ejs", {
-    quizAnswer: result.data.quizAnswer,
-    namesChoice: result.data.namesChoice,
+    quizAnswer: quizAnswer,
+    namesChoice: namesChoice,
     quizStarted: true,
-    gameOver: result.data.gameOver,
-    counter: result.data.counter,
-    correct: result.data.correct,
+    gameOver: gameOver,
+    counter: counter,
+    correct: correct,
   });
   console.log("Result:", result.data);
   } catch (error) {

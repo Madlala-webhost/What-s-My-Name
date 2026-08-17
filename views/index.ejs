@@ -55,6 +55,8 @@ footer {
             alt="What's My Name"
             height="60"
             width="auto"
+            
+            
           />
           <h5>What's My Name</h5></a
         >
@@ -127,9 +129,10 @@ Count down timer: <span id="timer"><%= locals.timer %></span> seconds
           </form>
           <% } else if (locals.gameOver) { %>
             <h2 style="color: red;">Game Over!</h2>
+            <h2>The correct answer was</h2><h2 style="color: green"><%= locals.quizAnswer[0].Name %></h2> 
             <p style="color: red;">Your final score is: <%= locals.counter %></p>
-            <form action="/start-quiz" method="post">
-              <button type="submit" class="btn btn-warning" name="quizStarted" value="true">
+            <form action="/reset-quiz" method="post">
+              <button type="submit" class="btn btn-warning">
                 <h2>Play Again</h2>
               </button>
             </form>
@@ -144,7 +147,7 @@ Count down timer: <span id="timer"><%= locals.timer %></span> seconds
           <% } %>
         </div>
         <% if(locals.quizStarted && locals.quizAnswer) { %>
-        <div class="card mb-3 bg-light rounded p-3 col-5 offset-1 justify-content-center align-item-center"><img style="height: 300px; width: auto; border-radius: 10%;" src="<%= locals.quizAnswer[0].URL %>" alt="<%= locals.quizAnswer[0].Name %>" class="img-fluid" /></div>
+        <div class="card mb-3 bg-light rounded p-3 col-5 offset-1 justify-content-center align-item-center"><img style="border-radius: 10%;" src="<%= locals.quizAnswer[0].URL %>" alt="<%= locals.quizAnswer[0].Name %>" class="img-fluid" media="min-width:50px"/></div>
         
         <% } %>
       </div> 
@@ -152,7 +155,7 @@ Count down timer: <span id="timer"><%= locals.timer %></span> seconds
       
         
         <div class="card mb-3 bg-light rounded p-3 col-12 justify-content-center align-items-center">
-          <% if(locals.quizStarted && locals.namesChoice && !locals.correct) { %>
+          <% if(locals.quizStarted && locals.namesChoice && !locals.correct && !locals.gameOver) { %>
           <form action="/check-answer" method="post">
             <% locals.namesChoice.forEach(function(name, index) { %>
               <button type="submit" class="btn btn-warning mb-2 hover" name="userAnswer" value="<%= name %>" >
