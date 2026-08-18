@@ -36,6 +36,7 @@ async function getAnimalByName() {
     const querySnapshot = await getDocs(q);
     if (querySnapshot) {
       const animals = querySnapshot.docs.map((doc) => doc.data());
+     
       state.animalData.push(...animals);
     }
   } catch (error) {
@@ -50,6 +51,7 @@ async function getRandomAnimal() {
   const answerGenerator = Math.floor(Math.random() * state.animalData.length);
 
   state.quizAnswer = [state.animalData[answerGenerator]];
+
   state.namesChoice.push(state.quizAnswer[0].Name);
 
   while (state.namesChoice.length < 5) {
@@ -57,6 +59,7 @@ async function getRandomAnimal() {
     const responseNames = state.animalData[randomIndex].Name;
     try {
       if (!state.namesChoice.includes(responseNames)) {
+        
         state.namesChoice.push(responseNames);
       } else {
         const removeName = state.namesChoice.find(
@@ -68,6 +71,7 @@ async function getRandomAnimal() {
             state.namesChoice.splice(index, 1);
           }
         }
+        
         state.namesChoice.push(responseNames);
       }
     } catch (error) {
