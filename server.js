@@ -35,10 +35,11 @@ app.post("/check-answer", async (req, res) => {
     const result = await axios.post(`${API_URL}/check-answer`, {
       userAnswer,
     });
-    const { quizAnswer, namesChoice, counter, gameOver, correct } = result.data;
+    const { quizAnswer, namesChoice, counter, gameOver, correct, correctAnswers } = result.data;
     res.render("index.ejs", {
       quizAnswer: quizAnswer,
       namesChoice: namesChoice,
+      correctAnswers: correctAnswers,
       quizStarted: true,
       gameOver: gameOver,
       counter: counter,

@@ -18,6 +18,7 @@ const state = {
   quizStarted: false,
   namesChoice: [],
   correct: false,
+  correctAnswers: [],
 };
 
 async function shuffleNames() {
@@ -36,7 +37,7 @@ async function getAnimalByName() {
     const querySnapshot = await getDocs(q);
     if (querySnapshot) {
       const animals = querySnapshot.docs.map((doc) => doc.data());
-     
+
       state.animalData.push(...animals);
     }
   } catch (error) {
@@ -50,32 +51,39 @@ async function getRandomAnimal() {
   state.namesChoice = [];
   const answerGenerator = Math.floor(Math.random() * state.animalData.length);
 
-  state.quizAnswer = [state.animalData[answerGenerator]];
+  const generatedAnswer = [state.animalData[answerGenerator]];
+  const duplicateAnswer = state.correctAnswers.includes(
+    generatedAnswer[0].Name,
+  );
 
-  state.namesChoice.push(state.quizAnswer[0].Name);
+  if (duplicateAnswer) {
+    return getRandomAnimal();
+  } else {
+    state.quizAnswer = generatedAnswer;
+    state.namesChoice.push(state.quizAnswer[0].Name);
 
-  while (state.namesChoice.length < 5) {
-    const randomIndex = Math.floor(Math.random() * state.animalData.length);
-    const responseNames = state.animalData[randomIndex].Name;
-    try {
-      if (!state.namesChoice.includes(responseNames)) {
-        
-        state.namesChoice.push(responseNames);
-      } else {
-        const removeName = state.namesChoice.find(
-          (name) => name === responseNames,
-        );
-        if (removeName) {
-          const index = state.namesChoice.indexOf(removeName);
-          if (index > -1) {
-            state.namesChoice.splice(index, 1);
+    while (state.namesChoice.length < 5) {
+      const randomIndex = Math.floor(Math.random() * state.animalData.length);
+      const responseNames = state.animalData[randomIndex].Name;
+      try {
+        if (!state.namesChoice.includes(responseNames)) {
+          state.namesChoice.push(responseNames);
+        } else {
+          const removeName = state.namesChoice.find(
+            (name) => name === responseNames,
+          );
+          if (removeName) {
+            const index = state.namesChoice.indexOf(removeName);
+            if (index > -1) {
+              state.namesChoice.splice(index, 1);
+            }
           }
+
+          state.namesChoice.push(responseNames);
         }
-        
-        state.namesChoice.push(responseNames);
+      } catch (error) {
+        console.error("Error generating names:", error);
       }
-    } catch (error) {
-      console.error("Error generating names:", error);
     }
   }
 
@@ -109,12 +117,14 @@ async function checkAnswer(userAnswer) {
   if (userAnswer === state.quizAnswer[0].Name) {
     state.counter++;
     state.correct = true;
+    state.correctAnswers.push(state.quizAnswer[0].Name);
 
     return {
       quizAnswer: state.quizAnswer,
       namesChoice: state.namesChoice,
       counter: state.counter,
       correct: state.correct,
+      correctAnswers: state.correctAnswers,
     };
   } else {
     state.gameOver = true;
@@ -125,6 +135,7 @@ async function checkAnswer(userAnswer) {
       quizAnswer: state.quizAnswer,
       namesChoice: state.namesChoice,
       counter: state.counter,
+      correctAnswers: state.correctAnswers,
     };
   }
 }
@@ -137,21 +148,22 @@ async function resetQuiz() {
   state.animalData = [];
   state.namesChoice = [];
   state.correct = false;
+  state.correctAnswers = [];
 }
 async function gameOver(GameOver) {
-  if(GameOver){
+  if (GameOver) {
+    state.gameOver = GameOver;
 
-  state.gameOver =GameOver;
-
-  state.quizStarted = false;
-  state.correct = false;
-
+    state.quizStarted = false;
+    state.correct = false;
   }
   return {
     message: "Game over.",
     counter: state.counter,
     quizAnswer: state.quizAnswer,
     gameOver: state.gameOver,
+    correct: state.correct,
+    correctAnswers: state.correctAnswers,
   };
 }
 
@@ -170,7 +182,6 @@ async function skipQuestion() {
     namesChoice: state.namesChoice,
     counter: state.counter,
     gameOver: state.gameOver,
-
   };
 }
 
@@ -206,7 +217,14 @@ app.post("/skip-question", async (req, res) => {
   try {
     const { quizAnswer, namesChoice, counter, gameOver, correct } =
       await skipQuestion();
-    res.json({ quizAnswer, namesChoice, counter, gameOver, correct });
+    res.json({
+      quizAnswer,
+      namesChoice,
+      counter,
+      gameOver,
+      correct,
+      correctAnswers: state.correctAnswers,
+    });
   } catch (error) {
     console.error("Error skipping question:", error);
     res.status(500).send("Internal Server Error");
@@ -221,7 +239,14 @@ app.post("/start-quiz", async (req, res) => {
 
     const { quizAnswer, namesChoice, counter, gameOver, correct } =
       await startQuiz();
-    res.json({ quizAnswer, namesChoice, counter, gameOver, correct });
+    res.json({
+      quizAnswer,
+      namesChoice,
+      counter,
+      gameOver,
+      correct,
+      correctAnswers: state.correctAnswers,
+    });
   } catch (error) {
     console.error("Error starting quiz:", error);
     res.status(500).send("Internal Server Error");
@@ -231,15 +256,23 @@ app.post("/start-quiz", async (req, res) => {
 app.post("/check-answer", async (req, res) => {
   try {
     const userAnswer = req.body.userAnswer;
-    const { quizAnswer, namesChoice, counter, gameOver, correct } =
+    const { quizAnswer, namesChoice, counter, gameOver, correct, correctAnswers } =
       await checkAnswer(userAnswer);
-    res.json({ quizAnswer, namesChoice, counter, gameOver, correct });
+    res.json({
+      quizAnswer,
+      namesChoice,
+      counter,
+      gameOver,
+      correct,
+      correctAnswers,
+    });
     console.log("Result:", {
       quizAnswer,
       namesChoice,
       counter,
       gameOver,
       correct,
+      correctAnswers,
     });
   } catch (error) {
     console.error("Error checking answer:", error);
@@ -254,7 +287,14 @@ app.post("/next-question", async (req, res) => {
     }
     const { quizAnswer, namesChoice, counter, gameOver, correct } =
       await nextQuestion();
-    res.json({ quizAnswer, namesChoice, counter, gameOver, correct });
+    res.json({
+      quizAnswer,
+      namesChoice,
+      counter,
+      gameOver,
+      correct,
+      
+    });
   } catch (error) {
     console.error("Error fetching next question:", error);
     res.status(500).send("Internal Server Error");
@@ -262,16 +302,25 @@ app.post("/next-question", async (req, res) => {
 });
 app.post("/game-over", async (req, res) => {
   try {
-    
-    const { quizAnswer, gameOver: gameOverStatus, counter, correct } = await gameOver(true);
-    res.json({ quizAnswer, gameOver: gameOverStatus, counter, correct });
+    const {
+      quizAnswer,
+      gameOver: gameOverStatus,
+      counter,
+      correct,
+      correctAnswers,
+    } = await gameOver(true);
+    res.json({
+      quizAnswer,
+      gameOver: gameOverStatus,
+      counter,
+      correct,
+      correctAnswers,
+    });
   } catch (error) {
     console.error("Error setting game over:", error);
     res.status(500).send("Internal Server Error");
   }
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -128,7 +128,7 @@
 
 <body>
 
-  <!-- NAVBAR -->
+ 
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm game-navbar py-3">
     <div class="container-fluid px-3 px-md-5">
       <a class="navbar-brand d-flex align-items-center" href="/">
@@ -156,11 +156,11 @@
     </div>
   </nav>
 
-  <!-- MAIN GAME AREA -->
+
   <main class="game-wrapper">
     <div class="game-card-container">
       
-      <!-- SCORE + TIMER HEADER -->
+   
       <div class="d-flex justify-content-between align-items-center mb-3 px-2">
         <div class="bg-white px-4 py-2 rounded-pill shadow-sm fw-bold fs-5 text-dark border">
           🏆 Score: <span class="text-primary"><%= locals.counter %></span>
@@ -178,11 +178,11 @@
         <% } %>
       </div>
 
-      <!-- GAME CARD -->
+  
       <section class="game-card text-center">
 
         <% if (!locals.quizStarted && !locals.gameOver && !locals.correct) { %>
-          <!-- START SCREEN -->
+          
           <div class="start-screen py-4">
             <div class="result-icon">🐾</div>
             <h1 class="display-5 fw-bold mb-3">What's My Name?</h1>
@@ -195,7 +195,7 @@
           </div>
 
         <% } else if (locals.gameOver) { %>
-          <!-- GAME OVER -->
+        
           <div class="result-screen py-4">
             <div class="result-icon wrong-icon">⏰</div>
             <h1 class="display-4 fw-bold text-danger mb-2">Game Over!</h1>
@@ -210,6 +210,10 @@
               <span class="fs-5 text-muted me-2">Final Score</span>
               <strong class="fs-2 text-primary"><%= locals.counter %></strong>
             </div>
+            <div>
+              <span class="info-box my-4 text-center fs-5">Animals you named correctly: </span>
+              <strong class="fs-5 text-success"><%= locals.correctAnswers %></strong>
+            </div>
 
             <form action="/reset-quiz" method="post">
               <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow">
@@ -219,7 +223,7 @@
           </div>
 
         <% } else if (locals.correct) { %>
-          <!-- CORRECT ANSWER -->
+         
           <div class="result-screen py-2">
             <div class="result-icon correct-icon">✨</div>
             <h1 class="display-5 fw-bold text-success mb-1">Correct!</h1>
@@ -244,14 +248,14 @@
           </div>
 
         <% } else if (locals.quizStarted && locals.quizAnswer) { %>
-          <!-- QUESTION -->
+          
           <div class="question-section">
             <h2 class="fw-bold mb-3">What animal is this?</h2>
             <img src="<%= locals.quizAnswer[0].URL %>" alt="<%= locals.quizAnswer[0].Name %>" class="animal-image">
           </div>
         <% } %>
 
-        <!-- ANSWERS GRID -->
+      
         <% if (locals.quizStarted && locals.namesChoice && !locals.correct && !locals.gameOver) { %>
           <div class="answers-section mt-4">
             <form action="/check-answer" method="post">
@@ -269,7 +273,7 @@
           </div>
         <% } %>
 
-        <!-- SECONDARY CONTROLS (SKIP/RESET) -->
+
         <% if (!locals.gameOver && locals.quizStarted && !locals.correct) { %>
           <div class="d-flex justify-content-center gap-3 mt-4 pt-3 border-top">
             <form action="/skip-question" method="post">
@@ -289,7 +293,7 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
+
   <footer class="game-footer py-4 mt-auto">
     <div class="container">
       <div class="row">
