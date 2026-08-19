@@ -70,7 +70,7 @@
     .animal-image {
       width: 100%;
       max-height: 350px;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       margin-bottom: 1.5rem;
@@ -194,12 +194,41 @@
             </form>
           </div>
 
-        <% } else if (locals.gameOver) { %>
+        <% } else if (locals.gameOver && !locals.correct) { %>
         
           <div class="result-screen py-4">
             <div class="result-icon wrong-icon">⏰</div>
             <h1 class="display-4 fw-bold text-danger mb-2">Game Over!</h1>
             <p class="fs-4 text-muted">Time's up!</p>
+            
+            <div class="info-box my-4 text-center fs-5">
+              <span class="text-muted">The correct answer was</span><br>
+              <strong class="text-dark fs-3"><%= locals.quizAnswer[0].Name %></strong>
+            </div>
+
+            <div class="bg-light rounded-pill d-inline-block px-5 py-3 mb-4 border">
+              <span class="fs-5 text-muted me-2">Final Score</span>
+              <strong class="fs-2 text-primary"><%= locals.counter %></strong>
+            </div>
+            <div>
+              <span class="info-box my-4 text-center fs-5">Animals you named correctly: </span>
+              <strong class="fs-5 text-success"><%= locals.correctAnswers %></strong>
+            </div>
+
+            <form action="/reset-quiz" method="post">
+              <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow">
+                Play Again 🔄
+              </button>
+            </form>
+          </div>
+             <% } else if (locals.gameOver && locals.correct) { %>
+        
+          <div class="result-screen py-4">
+            <div class="result-icon correct-icon">🎉</div>
+            <h1 class="display-4 fw-bold text-success mb-2">Congratulations!</h1>
+            <p class="fs-4 text-muted">You've completed the quiz!</p>
+            <p>You got <%= locals.correctAnswers.length %> out of <%= locals.counter %> correct!</p>
+           
             
             <div class="info-box my-4 text-center fs-5">
               <span class="text-muted">The correct answer was</span><br>

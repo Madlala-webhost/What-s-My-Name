@@ -139,6 +139,28 @@ async function checkAnswer(userAnswer) {
     };
   }
 }
+async function checkGameComplete () {
+  if (state.correctAnswers.length === state.animalData.length) {
+    state.gameOver = true;
+    return {
+      message: "Congratulations! You've completed the quiz.",
+      counter: state.counter,
+      quizAnswer: state.quizAnswer,
+      gameOver: state.gameOver,
+      correct: state.correct,
+      correctAnswers: state.correctAnswers,
+    };
+  } else {
+    return {
+      message: "Quiz is still in progress.",
+      counter: state.counter,
+      quizAnswer: state.quizAnswer,
+      gameOver: state.gameOver,
+      correct: state.correct,
+      correctAnswers: state.correctAnswers,
+    };
+  }
+}
 
 async function resetQuiz() {
   state.counter = 0;
@@ -173,16 +195,28 @@ async function skipQuestion() {
       message: "Quiz has not started yet.",
     };
   }
+  const { gameOver: gameOverStatus } = await checkGameComplete();
+  if (gameOverStatus) {
+    return {
+      message: "Game over. You've completed the quiz.",
+      counter: state.counter,
+      quizAnswer: state.quizAnswer,
+      gameOver: state.gameOver,
+      correct: state.correct,
+      correctAnswers: state.correctAnswers,
+    };
+  } else {  
 
   const { quizAnswer, namesChoice } = await getRandomAnimal();
   state.correct = false; // Reset correct to false when skipping a question
   return {
-    quizAnswer: state.quizAnswer,
+    quizAnswer: quizAnswer,
     correct: state.correct,
-    namesChoice: state.namesChoice,
+    namesChoice: namesChoice,
     counter: state.counter,
     gameOver: state.gameOver,
   };
+  }
 }
 
 async function nextQuestion() {
@@ -191,16 +225,29 @@ async function nextQuestion() {
       message: "Quiz has not started yet.",
     };
   }
+  
+  const { gameOver: gameOverStatus } = await checkGameComplete();
+  if (gameOverStatus) {
+    return {
+      message: "Game over. You've completed the quiz.",
+      counter: state.counter,
+      quizAnswer: state.quizAnswer,
+      gameOver: state.gameOver,
+      correct: state.correct,
+      correctAnswers: state.correctAnswers,
+    };
+  } else {
 
   const { quizAnswer, namesChoice } = await getRandomAnimal();
   state.correct = false; // Reset correct to false when moving to the next question
   return {
-    quizAnswer: state.quizAnswer,
+    quizAnswer: quizAnswer,
     correct: state.correct,
-    namesChoice: state.namesChoice,
+    namesChoice: namesChoice,
     counter: state.counter,
     gameOver: state.gameOver,
   };
+  }
 }
 
 app.post("/reset-quiz", async (req, res) => {
