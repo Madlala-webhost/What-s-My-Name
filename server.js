@@ -75,7 +75,7 @@ app.post("/start-quiz", async (req, res) => {
 app.post("/next-question", async (req, res) => {
   try {
     const result = await axios.post(`${API_URL}/next-question`);
-    const { quizAnswer, namesChoice, counter, gameOver, correct } = result.data;
+    const { quizAnswer, namesChoice, counter, gameOver, correct, correctAnswers} = result.data;
     res.render("index.ejs", {
       quizAnswer: quizAnswer,
       namesChoice: namesChoice,
@@ -83,6 +83,7 @@ app.post("/next-question", async (req, res) => {
       gameOver: gameOver,
       counter: counter,
       correct: correct,
+      correctAnswers: correctAnswers,
     
     });
   } catch (error) {
