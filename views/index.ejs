@@ -227,14 +227,14 @@
             <div class="result-icon correct-icon">🎉</div>
             <h1 class="display-4 fw-bold text-success mb-2">Congratulations!</h1>
             <p class="fs-4 text-muted">You've completed the quiz!</p>
-            <p>You got <%= locals.correctAnswers%> out of <%= locals.counter %> correct!</p>
+            <p>You got <%= locals.correctAnswers.length%> out of <%= locals.counter %> correct!</p>
            
             
             <div class="info-box my-4 text-center fs-5">
               <span class="text-muted">The correct answer was</span><br>
               <strong class="text-dark fs-3"><%= locals.quizAnswer[0].Name %></strong>
             </div>
-
+  
             <div class="bg-light rounded-pill d-inline-block px-5 py-3 mb-4 border">
               <span class="fs-5 text-muted me-2">Final Score</span>
               <strong class="fs-2 text-primary"><%= locals.counter %></strong>
