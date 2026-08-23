@@ -27,7 +27,7 @@ const state = {
   correctAnswers: [],
 };
 
-function renderHome(res, overrides = {}) {
+function renderHome(res, overrides = {}) { //overides is an object that can be used to override the state values when rendering the home page
   return res.render("index.ejs", {
     quizAnswer: state.quizAnswer,
     namesChoice: state.namesChoice,
@@ -86,7 +86,7 @@ async function buildQuestion() {
     .filter((animal) => animal.Name !== answer.Name)
     .map((animal) => animal.Name);
 
-  const distractors = shuffleArray(otherNames).slice(0, 4);
+  const distractors = shuffleArray(otherNames).slice(0, 4); //Here we are shuffling the other names and taking the first 4 as distractors
   state.namesChoice = shuffleArray([answer.Name, ...distractors]);
 }
 
@@ -134,10 +134,12 @@ app.post("/start-quiz", async (req, res) => {
     resetQuizState();
     state.quizStarted = true;
     await buildQuestion();
-    return renderHome(res);
+    return renderHome(res); //Here we are rendering the home page after starting the quiz and building the first question
   } catch (error) {
     console.error("Error starting quiz:", error);
-    return res.status(500).send("Could not start quiz. Check Firestore env vars and data.");
+    return res
+      .status(500)
+      .send("Could not start quiz. Check Firestore env vars and data.");
   }
 });
 
