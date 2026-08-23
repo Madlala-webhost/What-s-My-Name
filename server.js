@@ -1,168 +1,232 @@
+import path from "path";
+import { fileURLToPath } from "url";
 import express from "express";
-import bodyParser from "body-parser";
-import axios from "axios";
+import { collection, getDocs, query } from "firebase/firestore";
+import { db } from "./firebaseConfig.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const API_URL = "http://localhost:4000";
 
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-//Route to render the main page
+const state = {
+  animalData: [],
+  quizAnswer: null,
+  counter: 0,
+  gameOver: false,
+  quizStarted: false,
+  namesChoice: [],
+  correct: false,
+  correctAnswers: [],
+};
 
-app.get("/", async (req, res) => {
-  try {
-    res.render("index.ejs", {
-      quizAnswer: null,
-      randomNames: null,
-      quizStarted: false,
-      gameOver: false,
-      counter: 0,
-      correct: false,
-    });
-  } catch (error) {
-    console.error("Error rendering main page:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-app.get("/leaderboard", async (req, res) => {
-  try {
-    const resetResult = await axios.post(`${API_URL}/reset-quiz`,);
-    res.render("leaderboard.ejs");
-  } catch (error) {
-    console.error("Error fetching leaderboard:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-app.get("/login", async (req, res) => {
-  try {
-    const resetResult = await axios.post(`${API_URL}/reset-quiz`,);
-    res.render("login.ejs");
-  } catch (error) {
-    console.error("Error rendering login page:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
+function renderHome(res, overrides = {}) {
+  return res.render("index.ejs", {
+    quizAnswer: state.quizAnswer,
+    namesChoice: state.namesChoice,
+    correctAnswers: state.correctAnswers,
+    quizStarted: state.quizStarted,
+    gameOver: state.gameOver,
+    counter: state.counter,
+    correct: state.correct,
+    ...overrides,
+  });
+}
 
-app.post("/check-answer", async (req, res) => {
-  try {
-    const userAnswer = req.body.userAnswer;
-    const result = await axios.post(`${API_URL}/check-answer`, {
-      userAnswer,
-    });
-    const { quizAnswer, namesChoice, counter, gameOver, correct, correctAnswers } = result.data;
-    res.render("index.ejs", {
-      quizAnswer: quizAnswer,
-      namesChoice: namesChoice,
-      correctAnswers: correctAnswers,
-      quizStarted: true,
-      gameOver: gameOver,
-      counter: counter,
-      correct: correct,
-    });
-    console.log("Result:", result.data);
-  } catch (error) {
-    console.error("Error checking answer:", error);
-    res.status(500).send("Internal Server Error");
+function shuffleArray(list) {
+  const copy = [...list];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
   }
-});
+  return copy;
+}
 
-app.post("/start-quiz", async (req, res) => {
-  try {
-    const result = await axios.post(`${API_URL}/start-quiz`, {
-      quizStarted: true,
-    });
-    const { quizAnswer, namesChoice, counter, gameOver, correct } = result.data;
-    res.render("index.ejs", {
-      quizAnswer: quizAnswer,
-      namesChoice: namesChoice,
-      quizStarted: true,
-      gameOver: gameOver,
-      counter: counter,
-      correct: correct,
-    });
-  } catch (error) {
-    console.error("Error starting quiz:", error);
-    res.status(500).send("Internal Server Error");
+async function ensureAnimalsLoaded() {
+  if (state.animalData.length > 0) {
+    return;
   }
-});
 
-app.post("/next-question", async (req, res) => {
-  try {
-    const result = await axios.post(`${API_URL}/next-question`);
-    const { quizAnswer, namesChoice, counter, gameOver, correct, correctAnswers} = result.data;
-    res.render("index.ejs", {
-      quizAnswer: quizAnswer,
-      namesChoice: namesChoice,
-      quizStarted: true,
-      gameOver: gameOver,
-      counter: counter,
-      correct: correct,
-      correctAnswers: correctAnswers,
-    
-    });
-  } catch (error) {
-    console.error("Error fetching next question:", error);
-    res.status(500).send("Internal Server Error");
+  const q = query(collection(db, "animals"));
+  const snapshot = await getDocs(q);
+  state.animalData = snapshot.docs.map((doc) => doc.data());
+}
+
+async function buildQuestion() {
+  await ensureAnimalsLoaded();
+
+  if (state.animalData.length < 5) {
+    throw new Error("Need at least 5 animals in Firestore to start the quiz.");
   }
+
+  state.gameOver = false;
+  state.correct = false;
+
+  const available = state.animalData.filter(
+    (animal) => !state.correctAnswers.includes(animal.Name),
+  );
+
+  if (available.length === 0) {
+    state.gameOver = true;
+    state.correct = true;
+    return;
+  }
+
+  const answer = available[Math.floor(Math.random() * available.length)];
+  state.quizAnswer = [answer];
+
+  const otherNames = state.animalData
+    .filter((animal) => animal.Name !== answer.Name)
+    .map((animal) => animal.Name);
+
+  const distractors = shuffleArray(otherNames).slice(0, 4);
+  state.namesChoice = shuffleArray([answer.Name, ...distractors]);
+}
+
+function resetQuizState() {
+  state.counter = 0;
+  state.gameOver = false;
+  state.quizStarted = false;
+  state.quizAnswer = null;
+  state.namesChoice = [];
+  state.correct = false;
+  state.correctAnswers = [];
+}
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ ok: true });
 });
 
-app.post("/reset-quiz", async (req, res) => {
+app.get("/", (req, res) => {
   try {
-    await axios.post(`${API_URL}/reset-quiz`);
-    res.render("index.ejs", {
+    return renderHome(res, {
       quizAnswer: null,
       namesChoice: null,
       quizStarted: false,
       gameOver: false,
       counter: 0,
       correct: false,
+      correctAnswers: [],
     });
   } catch (error) {
-    console.error("Error resetting quiz:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-app.post("/game-over", async (req, res) => {
-  try {
-    const result = await axios.post(`${API_URL}/game-over`, {
-      gameOver: true,
-    } );
-    const { quizAnswer, gameOver, counter, correct, quizStarted } = result.data;
-    res.render("index.ejs", {
-      quizAnswer: quizAnswer,
-      quizStarted: quizStarted,
-      gameOver: gameOver,
-      counter: counter,
-      correct: correct,
-    });
-  } catch (error) {
-    console.error("Error handling game over:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-app.post("/skip-question", async (req, res) => {
-try{
-  const result = await axios.post(`${API_URL}/skip-question`);
-  const { quizAnswer, namesChoice, counter, gameOver, correct } = result.data;
-  res.render("index.ejs", {
-    quizAnswer: quizAnswer,
-    namesChoice: namesChoice,
-    quizStarted: true,
-    gameOver: gameOver,
-    counter: counter,
-    correct: correct,
-  });
-  console.log("Result:", result.data);
-  } catch (error) {
-    console.error("Error skipping question:", error);
-    res.status(500).send("Internal Server Error");
+    console.error("Error rendering main page:", error);
+    return res.status(500).send("Internal Server Error");
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.get("/leaderboard", (req, res) => {
+  return res.render("leaderboard.ejs");
 });
+
+app.get("/login", (req, res) => {
+  return res.render("login.ejs");
+});
+
+app.post("/start-quiz", async (req, res) => {
+  try {
+    resetQuizState();
+    state.quizStarted = true;
+    await buildQuestion();
+    return renderHome(res);
+  } catch (error) {
+    console.error("Error starting quiz:", error);
+    return res.status(500).send("Could not start quiz. Check Firestore env vars and data.");
+  }
+});
+
+app.post("/check-answer", async (req, res) => {
+  try {
+    const userAnswer = req.body.userAnswer;
+
+    if (!state.quizStarted || !state.quizAnswer) {
+      return renderHome(res, { correct: false, gameOver: false });
+    }
+
+    if (userAnswer === state.quizAnswer[0].Name) {
+      state.counter += 1;
+      state.correct = true;
+      state.correctAnswers.push(state.quizAnswer[0].Name);
+      return renderHome(res);
+    }
+
+    state.gameOver = true;
+    state.correct = false;
+    return renderHome(res);
+  } catch (error) {
+    console.error("Error checking answer:", error);
+    return res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/next-question", async (req, res) => {
+  try {
+    if (!state.quizStarted) {
+      return renderHome(res, { quizStarted: false });
+    }
+
+    await buildQuestion();
+    return renderHome(res);
+  } catch (error) {
+    console.error("Error fetching next question:", error);
+    return res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/skip-question", async (req, res) => {
+  try {
+    if (!state.quizStarted) {
+      return renderHome(res, { quizStarted: false });
+    }
+
+    await buildQuestion();
+    return renderHome(res);
+  } catch (error) {
+    console.error("Error skipping question:", error);
+    return res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/game-over", (req, res) => {
+  try {
+    state.gameOver = true;
+    state.correct = false;
+    state.quizStarted = false;
+    return renderHome(res);
+  } catch (error) {
+    console.error("Error handling game over:", error);
+    return res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/reset-quiz", (req, res) => {
+  try {
+    resetQuizState();
+    return renderHome(res, {
+      quizAnswer: null,
+      namesChoice: null,
+      quizStarted: false,
+      gameOver: false,
+      counter: 0,
+      correct: false,
+      correctAnswers: [],
+    });
+  } catch (error) {
+    console.error("Error resetting quiz:", error);
+    return res.status(500).send("Internal Server Error");
+  }
+});
+
+if (process.env.VERCEL !== "1") {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+export default app;
