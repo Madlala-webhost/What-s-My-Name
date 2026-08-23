@@ -1,7 +1,6 @@
 import fs from "fs";
 import csv from "csv-parser";
-import { db } from "./firebaseConfig.js";
-import { addDoc, collection } from "firebase/firestore";
+import { getAdminDb } from "./firebaseAdmin.js";
 
 const filePath = "./Learn your species db.csv";
 
@@ -20,6 +19,7 @@ function loadAnimalsFromCsv(path) {
 }
 
 async function uploadAnimals() {
+  const db = getAdminDb();
   const animals = await loadAnimalsFromCsv(filePath);
 
   if (animals.length === 0) {
@@ -27,9 +27,7 @@ async function uploadAnimals() {
     return;
   }
 
-  const uploads = animals.map((animal) =>
-    addDoc(collection(db, "animals"), animal),
-  );
+  const uploads = animals.map((animal) => db.collection("animals").add(animal));
   await Promise.all(uploads);
 
   fs.writeFileSync("animals.txt", JSON.stringify(animals, null, 2));

@@ -1,11 +1,12 @@
 import path from "path";
+import { readFile } from "fs/promises";
 import { fileURLToPath } from "url";
 import express from "express";
-import { collection, getDocs, query } from "firebase/firestore";
-import { db } from "./firebaseConfig.js";
+import { getAdminDb } from "./firebaseAdmin.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const LOCAL_ANIMALS_PATH = path.join(__dirname, "animals.txt");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,8 @@ app.set("views", path.join(__dirname, "views"));
 
 const state = {
   animalData: [],
+  dataSource: null,
+  lastDataLoadError: null,
   quizAnswer: null,
   counter: 0,
   gameOver: false,
@@ -27,7 +30,8 @@ const state = {
   correctAnswers: [],
 };
 
-function renderHome(res, overrides = {}) { //overides is an object that can be used to override the state values when rendering the home page
+function renderHome(res, overrides = {}) {
+  //overides is an object that can be used to override the state values when rendering the home page
   return res.render("index.ejs", {
     quizAnswer: state.quizAnswer,
     namesChoice: state.namesChoice,
@@ -54,9 +58,37 @@ async function ensureAnimalsLoaded() {
     return;
   }
 
-  const q = query(collection(db, "animals"));
-  const snapshot = await getDocs(q);
-  state.animalData = snapshot.docs.map((doc) => doc.data());
+  try {
+    const snapshot = await getAdminDb().collection("animals").get();
+    const firestoreAnimals = snapshot.docs.map((doc) => doc.data());
+
+    if (firestoreAnimals.length > 0) {
+      state.animalData = firestoreAnimals;
+      state.dataSource = "firestore";
+      state.lastDataLoadError = null;
+      return;
+    }
+
+    throw new Error("Firestore query returned 0 animals.");
+  } catch (firestoreError) {
+    try {
+      const fileContent = await readFile(LOCAL_ANIMALS_PATH, "utf8");
+      const parsed = JSON.parse(fileContent);
+      const localAnimals = Array.isArray(parsed) ? parsed : [];
+
+      if (localAnimals.length === 0) {
+        throw new Error("Local animals.txt file is empty.");
+      }
+
+      state.animalData = localAnimals;
+      state.dataSource = "local-file";
+      state.lastDataLoadError = `Firestore failed: ${firestoreError.message}`;
+      return;
+    } catch (fileError) {
+      state.lastDataLoadError = `Firestore failed: ${firestoreError.message}; local fallback failed: ${fileError.message}`;
+      throw new Error(state.lastDataLoadError);
+    }
+  }
 }
 
 async function buildQuestion() {
@@ -101,7 +133,12 @@ function resetQuizState() {
 }
 
 app.get("/health", (req, res) => {
-  res.status(200).json({ ok: true });
+  res.status(200).json({
+    ok: true,
+    dataSource: state.dataSource,
+    animalsLoaded: state.animalData.length,
+    lastDataLoadError: state.lastDataLoadError,
+  });
 });
 
 app.get("/", (req, res) => {
@@ -137,9 +174,7 @@ app.post("/start-quiz", async (req, res) => {
     return renderHome(res); //Here we are rendering the home page after starting the quiz and building the first question
   } catch (error) {
     console.error("Error starting quiz:", error);
-    return res
-      .status(500)
-      .send("Could not start quiz. Check Firestore env vars and data.");
+    return res.status(500).send(`Could not start quiz. ${error.message}`);
   }
 });
 
