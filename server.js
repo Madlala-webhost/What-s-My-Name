@@ -28,6 +28,24 @@ app.get("/", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+app.get("/leaderboard", async (req, res) => {
+  try {
+    const resetResult = await axios.post(`${API_URL}/reset-quiz`,);
+    res.render("leaderboard.ejs");
+  } catch (error) {
+    console.error("Error fetching leaderboard:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+app.get("/login", async (req, res) => {
+  try {
+    const resetResult = await axios.post(`${API_URL}/reset-quiz`,);
+    res.render("login.ejs");
+  } catch (error) {
+    console.error("Error rendering login page:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 app.post("/check-answer", async (req, res) => {
   try {

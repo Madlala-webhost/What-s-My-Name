@@ -1,161 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>What's My Name</title>
-
-  <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap"
-    rel="stylesheet"
-  />
-
-  <link rel="stylesheet" href="/styles.css" />
-
-  <style>
-    /* Global playful styling */
-    body {
-      font-family: 'DynaPuff', system-ui, sans-serif;
-      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #4a4e69;
-      margin-left: 10px;
-    }
-
-    .logo {
-      height: 40px;
-      width: auto;
-    }
-
-    /* Game Container Constraints */
-    .game-wrapper {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-    }
-
-    .game-card-container {
-      width: 100%;
-      max-width: 650px; /* Prevents stretching on desktop */
-    }
-
-    .game-card {
-      background: #ffffff;
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      padding: 2rem;
-    }
-
-    /* Image Styling */
-    .animal-image {
-      width: 100%;
-      max-height: 350px;
-      object-fit: contain;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 1.5rem;
-    }
-
-    /* Custom Button Animations */
-    .answer-btn {
-      transition: all 0.2s ease-in-out;
-      border-width: 2px;
-    }
-    
-    .answer-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(13, 110, 253, 0.15);
-    }
-
-    .answer-letter {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      background-color: rgba(13, 110, 253, 0.1);
-      color: #0d6efd;
-      border-radius: 50%;
-      font-weight: bold;
-      margin-right: 10px;
-    }
-
-    /* Result Screens */
-    .result-icon {
-      font-size: 4rem;
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-    .correct-icon { color: #198754; }
-    .wrong-icon { color: #dc3545; }
-
-    /* Info Cards */
-    .info-box {
-      background: #f8f9fa;
-      border-radius: 12px;
-      padding: 1rem;
-      margin-top: 1rem;
-      text-align: left;
-    }
-
-    /* Footer */
-    .game-footer {
-      background-color: #ffffff;
-      border-top: 1px solid #eaeaea;
-    }
-  </style>
-</head>
-
-<body>
-
- 
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm game-navbar py-3">
-    <div class="container-fluid px-3 px-md-5">
-      <a class="navbar-brand d-flex align-items-center" href="/">
-        <img src="https://res.cloudinary.com/dvpva0mcr/image/upload/v1785786534/logo_nvd4ow.png" alt="What's My Name" class="logo">
-        <span class="brand-name">What's My Name</span>
-      </a>
-
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fs-5">
-          <li class="nav-item">
-            <a class="nav-link active fw-bold text-primary" href="/">Play</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/leaderboard">Leaderboard</a>
-          </li>
-        </ul>
-        <div class="d-flex">
-          <a href="/login" class="btn btn-outline-primary rounded-pill px-4 fw-bold">Login</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
+<%-include('partials/header') %>
 
   <main class="game-wrapper">
     <div class="game-card-container">
@@ -210,10 +53,17 @@
               <span class="fs-5 text-muted me-2">Final Score</span>
               <strong class="fs-2 text-primary"><%= locals.counter %></strong>
             </div>
+            <%if (locals.counter>0){%>
             <div>
-              <span class="info-box my-4 text-center fs-5">Animals you named correctly: </span>
-              <strong class="fs-5 text-success"><%= locals.correctAnswers %></strong>
+              <span class="info-box my-4 text-center fs-5">You got <%= locals.correctAnswers.length %> correct:</span>
+              <strong class="fs-5 text-success"><%= locals.correctAnswers.join(', ') %></strong>
             </div>
+            <% } else { %>
+            <div>
+              <span class="info-box my-4 text-center fs-5">You got <strong class="fs-5 text-warning">no answers</strong> correct</span>
+              
+            </div>
+            <% } %>
 
             <form action="/reset-quiz" method="post">
               <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow">
@@ -322,19 +172,8 @@
     </div>
   </main>
 
-
-  <footer class="game-footer py-4 mt-auto">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 text-center text-md-start mb-2 mb-md-0 text-muted fw-bold">
-          © 2026 What's My Name
-        </div>
-        <div class="col-md-6 text-center text-md-end text-muted">
-          Made with ❤️ by <span class="text-primary fw-bold">Njabulo</span>
-        </div>
-      </div>
-    </div>
-  </footer>
+<%- include('partials/footer') %>
+  
 
   <script>
     const quiz = document.getElementById("quiz-active");

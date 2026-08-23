@@ -49,6 +49,8 @@ async function getRandomAnimal() {
   state.quizAnswer = null;
   state.correct = false;
   state.namesChoice = [];
+  state.correctAnswers = state.correctAnswers || [];
+  state.gameOver = false;
   const answerGenerator = Math.floor(Math.random() * state.animalData.length);
 
   const generatedAnswer = [state.animalData[answerGenerator]];
@@ -94,6 +96,7 @@ async function getRandomAnimal() {
 }
 
 async function startQuiz() {
+ 
   state.quizStarted = true;
   await getAnimalByName();
   const { quizAnswer, namesChoice } = await getRandomAnimal();
@@ -102,6 +105,8 @@ async function startQuiz() {
     namesChoice: state.namesChoice,
     counter: state.counter,
     gameOver: state.gameOver,
+    isCorrect: state.correct,
+    correctAnswers: state.correctAnswers,
   };
 }
 
@@ -139,7 +144,7 @@ async function checkAnswer(userAnswer) {
     };
   }
 }
-async function checkGameComplete () {
+async function checkGameComplete() {
   if (state.correctAnswers.length === state.animalData.length) {
     state.gameOver = true;
     return {
@@ -206,19 +211,18 @@ async function skipQuestion() {
       correctAnswers: state.correctAnswers,
       message: "Game over. You've completed the quiz.",
     };
-  } else {  
-
-  const { quizAnswer, namesChoice } = await getRandomAnimal();
-  state.correct = false; // Reset correct to false when skipping a question
-  return {
-    quizAnswer: quizAnswer,
-    correct: state.correct,
-    namesChoice: namesChoice,
-    counter: state.counter,
-    gameOver: state.gameOver,
-    message: "Question skipped. Here's the next question.",
-    correctAnswers: state.correctAnswers,
-  };
+  } else {
+    const { quizAnswer, namesChoice } = await getRandomAnimal();
+    state.correct = false; // Reset correct to false when skipping a question
+    return {
+      quizAnswer: quizAnswer,
+      correct: state.correct,
+      namesChoice: namesChoice,
+      counter: state.counter,
+      gameOver: state.gameOver,
+      message: "Question skipped. Here's the next question.",
+      correctAnswers: state.correctAnswers,
+    };
   }
 }
 
@@ -228,7 +232,7 @@ async function nextQuestion() {
       message: "Quiz has not started yet.",
     };
   }
-  
+
   const { gameOver, correctAnswers } = await checkGameComplete();
   if (gameOver) {
     return {
@@ -240,7 +244,6 @@ async function nextQuestion() {
       correctAnswers: state.correctAnswers,
     };
   } else {
-
     const { quizAnswer, namesChoice } = await getRandomAnimal();
     state.correct = false; // Reset correct to false when moving to the next question
     return {
@@ -269,11 +272,11 @@ app.post("/skip-question", async (req, res) => {
     const { quizAnswer, namesChoice, counter, gameOver, correct } =
       await skipQuestion();
     res.json({
-      quizAnswer,
-      namesChoice,
-      counter,
-      gameOver,
-      correct,
+      quizAnswer: quizAnswer,
+      namesChoice: namesChoice,
+      counter: counter,
+      gameOver: gameOver,
+      correct: correct,
       correctAnswers: state.correctAnswers,
     });
   } catch (error) {
@@ -284,10 +287,6 @@ app.post("/skip-question", async (req, res) => {
 
 app.post("/start-quiz", async (req, res) => {
   try {
-    if (state.quizStarted) {
-      return res.status(400).json({ message: "Quiz already started." });
-    }
-
     const { quizAnswer, namesChoice, counter, gameOver, correct } =
       await startQuiz();
     res.json({
@@ -307,8 +306,14 @@ app.post("/start-quiz", async (req, res) => {
 app.post("/check-answer", async (req, res) => {
   try {
     const userAnswer = req.body.userAnswer;
-    const { quizAnswer, namesChoice, counter, gameOver, correct, correctAnswers } =
-      await checkAnswer(userAnswer);
+    const {
+      quizAnswer,
+      namesChoice,
+      counter,
+      gameOver,
+      correct,
+      correctAnswers,
+    } = await checkAnswer(userAnswer);
     res.json({
       quizAnswer,
       namesChoice,
@@ -336,11 +341,17 @@ app.post("/next-question", async (req, res) => {
     if (!state.quizStarted) {
       return res.status(400).json({ message: "Quiz has not started yet." });
     }
-    const { quizAnswer, namesChoice, counter, gameOver, correct, correctAnswers } =
-      await nextQuestion();
+    const {
+      quizAnswer,
+      namesChoice,
+      counter,
+      gameOver,
+      correct,
+      correctAnswers,
+    } = await nextQuestion();
     res.json({
       quizAnswer: quizAnswer,
-    namesChoice: namesChoice,
+      namesChoice: namesChoice,
       counter: counter,
       gameOver: gameOver,
       correct: correct,

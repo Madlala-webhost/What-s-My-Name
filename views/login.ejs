@@ -1,0 +1,64 @@
+<%-include('partials/header') %>
+  <style>
+    body {
+      font-family: 'DynaPuff', system-ui, sans-serif;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name { font-weight: 700; font-size: 1.5rem; color: #4a4e69; margin-left: 10px; }
+    .logo { height: 40px; width: auto; }
+    
+    .page-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .feature-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 500px;
+      width: 100%;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    /* Floating Animation for the Icon */
+    .floating-icon {
+      font-size: 5rem;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+      margin-bottom: 1.5rem;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .game-footer { background-color: #ffffff; border-top: 1px solid #eaeaea; }
+  </style>
+
+  <!-- MAIN CONTENT -->
+  <main class="page-wrapper">
+    <div class="feature-card">
+      <div class="floating-icon">🔐</div>
+      <h1 class="display-5 fw-bold text-dark mb-3">Under Construction</h1>
+      <h2 class="h4 text-primary mb-4">Player Accounts</h2>
+      
+      <p class="fs-5 text-muted mb-4">
+        We are building a secure way for you to save your progress, unlock achievements, and customize your profile. Player logins are coming soon!
+      </p>
+
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="/" class="btn btn-light border rounded-pill px-4 fw-bold">
+          ➔ Back to Game
+        </a>
+      </div>
+    </div>
+  </main>
+<%-include('partials/footer') %>

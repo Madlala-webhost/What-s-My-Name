@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard - What's My Name</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'DynaPuff', system-ui, sans-serif;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name { font-weight: 700; font-size: 1.5rem; color: #4a4e69; margin-left: 10px; }
+    .logo { height: 40px; width: auto; }
+    
+    .page-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .feature-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 500px;
+      width: 100%;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    /* Floating Animation for the Icon */
+    .floating-icon {
+      font-size: 5rem;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+      margin-bottom: 1.5rem;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .game-footer { background-color: #ffffff; border-top: 1px solid #eaeaea; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+    <div class="container-fluid px-3 px-md-5">
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <img src="https://res.cloudinary.com/dvpva0mcr/image/upload/v1785786534/logo_nvd4ow.png" alt="What's My Name" class="logo">
+        <span class="brand-name">What's My Name</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fs-5">
+          <li class="nav-item"><a class="nav-link" href="/">Play</a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="/leaderboard">Leaderboard</a></li>
+        </ul>
+        <div class="d-flex">
+          <a href="/login" class="btn btn-outline-primary rounded-pill px-4 fw-bold">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="page-wrapper">
+    <div class="feature-card">
+      <div class="floating-icon">🏆</div>
+      <h1 class="display-5 fw-bold text-dark mb-3">Coming Soon!</h1>
+      <h2 class="h4 text-primary mb-4">Global Leaderboards</h2>
+      
+      <p class="fs-5 text-muted mb-5">
+        We're currently tallying up the scores in the background. Soon, you'll be able to see how your animal knowledge stacks up against players worldwide!
+      </p>
+      
+      <a href="/" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow">
+        Keep Practicing ➔
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="game-footer py-4 mt-auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start mb-2 mb-md-0 text-muted fw-bold">© 2026 What's My Name</div>
+        <div class="col-md-6 text-center text-md-end text-muted">Made with ❤️ by <span class="text-primary fw-bold">Njabulo</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
