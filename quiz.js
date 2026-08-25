@@ -357,6 +357,7 @@ app.post("/next-question", async (req, res) => {
       correct: correct,
       correctAnswers: correctAnswers,
     });
+  
   } catch (error) {
     console.error("Error fetching next question:", error);
     res.status(500).send("Internal Server Error");

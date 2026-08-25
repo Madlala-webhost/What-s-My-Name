@@ -2,7 +2,8 @@ import path from "path";
 import { readFile } from "fs/promises";
 import { fileURLToPath } from "url";
 import express from "express";
-import { getAdminDb } from "./firebaseAdmin.js";
+import { db } from "./firebaseConfig.js";
+import { collection, query, getDocs } from "firebase/firestore";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -43,7 +44,9 @@ function renderHome(res, overrides = {}) {
     correct: state.correct,
     timeout: state.timeout,
     ...overrides,
+  
   });
+  
 }
 
 function shuffleArray(list) {
@@ -61,35 +64,15 @@ async function ensureAnimalsLoaded() {
   }
 
   try {
-    const snapshot = await getAdminDb().collection("animals").get();
-    const firestoreAnimals = snapshot.docs.map((doc) => doc.data());
+    const q = query(collection(db, "animals"));
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot) {
+      const animals = querySnapshot.docs.map((doc) => doc.data());
 
-    if (firestoreAnimals.length > 0) {
-      state.animalData = firestoreAnimals;
-      state.dataSource = "firestore";
-      state.lastDataLoadError = null;
-      return;
+      state.animalData.push(...animals);
     }
-
-    throw new Error("Firestore query returned 0 animals.");
   } catch (firestoreError) {
-    try {
-      const fileContent = await readFile(LOCAL_ANIMALS_PATH, "utf8");
-      const parsed = JSON.parse(fileContent);
-      const localAnimals = Array.isArray(parsed) ? parsed : [];
-
-      if (localAnimals.length === 0) {
-        throw new Error("Local animals.txt file is empty.");
-      }
-
-      state.animalData = localAnimals;
-      state.dataSource = "local-file";
-      state.lastDataLoadError = `Firestore failed: ${firestoreError.message}`;
-      return;
-    } catch (fileError) {
-      state.lastDataLoadError = `Firestore failed: ${firestoreError.message}; local fallback failed: ${fileError.message}`;
-      throw new Error(state.lastDataLoadError);
-    }
+    console.error("Error loading animals from Firestore:", firestoreError);
   }
 }
 
@@ -156,6 +139,7 @@ app.get("/", (req, res) => {
       correct: false,
       correctAnswers: [],
     });
+
   } catch (error) {
     console.error("Error rendering main page:", error);
     return res.status(500).send("Internal Server Error");
@@ -214,6 +198,8 @@ app.post("/next-question", async (req, res) => {
 
     await buildQuestion();
     return renderHome(res);
+  
+  
   } catch (error) {
     console.error("Error fetching next question:", error);
     return res.status(500).send("Internal Server Error");

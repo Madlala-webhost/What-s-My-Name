@@ -124,8 +124,8 @@
               </p>
             </div>
             
-            <form action="/next-question" method="post">
-              <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 fw-bold shadow w-100 loading-action-btn">
+            <form class="loading-action-form" action="/next-question" method="post">
+              <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 fw-bold shadow w-100">
                 Next Question ➔
               </button>
             </form>
@@ -238,11 +238,6 @@
       });
     });
 
-    document.querySelectorAll(".loading-action-btn").forEach(function (button) {
-      button.addEventListener("click", function () {
-        setLoadingState(button);
-      });
-    });
   </script>
  
 
