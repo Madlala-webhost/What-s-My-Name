@@ -31,7 +31,7 @@
             <div class="result-icon">🐾</div>
             <h1 class="display-5 fw-bold mb-3">What's My Name?</h1>
             <p class="fs-5 text-muted mb-4">Can you identify the animal before time runs out?</p>
-            <form action="/start-quiz" method="post">
+            <form id="start-quiz-form" action="/start-quiz" method="post">
               <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fs-4 fw-bold shadow" name="quizStarted" value="true">
                 Start Game 🚀
               </button>
@@ -70,7 +70,7 @@
             </div>
             <% } %>
 
-            <form action="/reset-quiz" method="post">
+            <form class="loading-action-form" action="/reset-quiz" method="post">
               <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow">
                 Play Again 🔄
               </button>
@@ -99,7 +99,7 @@
               <strong class="fs-5 text-success"><%= locals.correctAnswers %></strong>
             </div>
 
-            <form action="/reset-quiz" method="post">
+            <form class="loading-action-form" action="/reset-quiz" method="post">
               <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow">
                 Play Again 🔄
               </button>
@@ -125,7 +125,7 @@
             </div>
             
             <form action="/next-question" method="post">
-              <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 fw-bold shadow w-100">
+              <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 fw-bold shadow w-100 loading-action-btn">
                 Next Question ➔
               </button>
             </form>
@@ -160,12 +160,12 @@
 
         <% if (!locals.gameOver && locals.quizStarted && !locals.correct) { %>
           <div class="d-flex justify-content-center gap-3 mt-4 pt-3 border-top">
-            <form action="/skip-question" method="post">
+            <form id="skip-question-form" action="/skip-question" method="post">
               <button type="submit" class="btn btn-light fw-bold px-4 rounded-pill border">
                 Skip ⏭️
               </button>
             </form>
-            <form action="/reset-quiz" method="post">
+            <form id="reset-quiz-form" action="/reset-quiz" method="post">
               <button type="submit" class="btn btn-light text-danger fw-bold px-4 rounded-pill border">
                 Reset 🛑
               </button>
@@ -209,6 +209,40 @@
         }
       }, 1000);
     }
+  </script>
+  <script>
+    function setLoadingState(button) {
+      if (!button || button.disabled) return;
+      button.disabled = true;
+      button.textContent = "Loading...";
+    }
+
+    function bindSubmitLoading(formSelector) {
+      const form = document.querySelector(formSelector);
+      if (!form) return;
+
+      form.addEventListener("submit", function () {
+        const submitButton = form.querySelector("button[type='submit']");
+        setLoadingState(submitButton);
+      });
+    }
+
+    bindSubmitLoading("#start-quiz-form");
+    bindSubmitLoading("#skip-question-form");
+    bindSubmitLoading("#reset-quiz-form");
+
+    document.querySelectorAll(".loading-action-form").forEach(function (form) {
+      form.addEventListener("submit", function () {
+        const submitButton = form.querySelector("button[type='submit']");
+        setLoadingState(submitButton);
+      });
+    });
+
+    document.querySelectorAll(".loading-action-btn").forEach(function (button) {
+      button.addEventListener("click", function () {
+        setLoadingState(button);
+      });
+    });
   </script>
  
 
