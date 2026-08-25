@@ -17,6 +17,7 @@
         <span id="quiz-active"></span>
         <form id="timeout-form" action="/game-over" method="post" class="d-none">
           <input type="hidden" name="gameOver" value="true">
+          <input type="hidden" name="timeout" value="true">
         </form>
         <% } %>
       </div>
@@ -38,11 +39,15 @@
           </div>
 
         <% } else if (locals.gameOver && !locals.correct) { %>
+
+        
         
           <div class="result-screen py-4">
-            <div class="result-icon wrong-icon">⏰</div>
+           
+      
+            <div id="outcomeIcon" class="result-icon wrong-icon"><%= locals.timeout ? "⏰" : "❌" %></div>
             <h1 class="display-4 fw-bold text-danger mb-2">Game Over!</h1>
-            <p class="fs-4 text-muted">Time's up!</p>
+            <p id="outcomeP" class="fs-4 text-muted"><%= locals.timeout ? "Time's up!" : "Better Luck Next Time!" %></p>
             
             <div class="info-box my-4 text-center fs-5">
               <span class="text-muted">The correct answer was</span><br>
@@ -177,9 +182,19 @@
 
   <script>
     const quiz = document.getElementById("quiz-active");
+    
     if (quiz) {
       let timer = 30; // Starts at 30
+  
       const display = document.getElementById("timer");
+      function updateGameState() {
+        if (timer <= 0) {
+          
+          clearInterval(timerInterval);
+          document.getElementById("timeout-form").submit();
+         
+        }
+      }
       
       const timerInterval = setInterval(function () {
         timer--;
@@ -190,12 +205,12 @@
         }
 
         if (timer <= 0) {
-          clearInterval(timerInterval);
-          document.getElementById("timeout-form").submit();
+          updateGameState();
         }
       }, 1000);
     }
   </script>
+ 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 

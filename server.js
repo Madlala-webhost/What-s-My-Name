@@ -28,6 +28,7 @@ const state = {
   namesChoice: [],
   correct: false,
   correctAnswers: [],
+  timeout: false,
 };
 
 function renderHome(res, overrides = {}) {
@@ -40,6 +41,7 @@ function renderHome(res, overrides = {}) {
     gameOver: state.gameOver,
     counter: state.counter,
     correct: state.correct,
+    timeout: state.timeout,
     ...overrides,
   });
 }
@@ -100,6 +102,7 @@ async function buildQuestion() {
 
   state.gameOver = false;
   state.correct = false;
+  state.timeout = false;
 
   const available = state.animalData.filter(
     (animal) => !state.correctAnswers.includes(animal.Name),
@@ -130,6 +133,7 @@ function resetQuizState() {
   state.namesChoice = [];
   state.correct = false;
   state.correctAnswers = [];
+  state.timeout = false;
 }
 
 app.get("/health", (req, res) => {
@@ -235,6 +239,7 @@ app.post("/game-over", (req, res) => {
     state.gameOver = true;
     state.correct = false;
     state.quizStarted = false;
+    state.timeout = req.body.timeout === "true"; // Set timeout based on the form submission
     return renderHome(res);
   } catch (error) {
     console.error("Error handling game over:", error);
