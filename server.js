@@ -67,22 +67,21 @@ async function ensureAnimalsLoaded() {
     const q = query(collection(db, "animals"));
     const querySnapshot = await getDocs(q);
 
-    if (!querySnapshot) {
-      throw new Error("Firestore returned no animals query results.");
+    if (querySnapshot) {
+      const animals = querySnapshot.docs.map((doc) => doc.data());
+
+      if (animals.length > 0) {
+        state.animalData.push(...animals);
+        state.dataSource = "firestore";
+        return;
+      }
     }
 
-    const animals = querySnapshot.docs.map((doc) => doc.data());
-
-    if (animals.length === 0) {
-      throw new Error("No animal data found in Firestore.");
-    }
-
-    state.animalData.push(...animals);
-    state.dataSource = "firestore";
-  } catch (error) {
-    state.lastDataLoadError = error.message;
-    console.error("Error loading animals:", error);
-    throw error;
+    throw new Error("No animal data found in Firestore.");
+  } catch (firestoreError) {
+    state.lastDataLoadError = firestoreError.message;
+    console.error("Error loading animals from Firestore:", firestoreError);
+    throw firestoreError;
   }
 }
 
