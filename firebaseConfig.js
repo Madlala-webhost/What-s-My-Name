@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 import env from "dotenv";
 env.config();
@@ -19,40 +20,7 @@ const firebaseConfig = {
   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
-const hasFirebaseConfig = Boolean(
-  firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.appId,
-);
-
-let app = null;
-let db = null;
-
-function getFirebaseApp() {
-  if (!hasFirebaseConfig) {
-    return null;
-  }
-
-  if (app) {
-    return app;
-  }
-
-  app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
-  return app;
-}
-
-export function getDb() {
-  const firebaseApp = getFirebaseApp();
-
-  if (!firebaseApp) {
-    return null;
-  }
-
-  if (!db) {
-    db = getFirestore(firebaseApp);
-  }
-
-  return db;
-}
-
-export { hasFirebaseConfig };
-
-export default getFirebaseApp();
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+export default app;

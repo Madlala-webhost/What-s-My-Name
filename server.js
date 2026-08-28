@@ -1,7 +1,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
-import { getDb } from "./firebaseConfig.js";
+import { db } from "./firebaseConfig.js";
 import { collection, query, getDocs } from "firebase/firestore";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -60,8 +60,6 @@ async function ensureAnimalsLoaded() {
   }
 
   try {
-    const db = getDb();
-
     if (!db) {
       throw new Error("Missing Firebase Firestore configuration.");
     }
