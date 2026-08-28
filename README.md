@@ -28,24 +28,22 @@ npm run dev
 
 1. Push your repo to GitHub.
 2. Import the project in Vercel.
-3. In Vercel Project Settings -> Environment Variables, add:
-   - FIREBASE_PROJECT_ID
-   - FIREBASE_SERVICE_ACCOUNT_JSON
+3. Trigger a deployment.
 
-   `FIREBASE_SERVICE_ACCOUNT_JSON` must be the full JSON object from your Firebase service account key, on one line.
-4. Trigger a deployment.
+Add the Firebase web app values to Vercel environment variables. If they are missing or incorrect, the quiz route will fail loudly instead of silently using local data.
 
 The app includes `vercel.json` and exports the Express app from `server.js`, so no extra build setup is needed.
 
 ## Notes
 
 - `/health` returns `{ "ok": true }` for quick uptime checks.
-- Data loading now tries Firestore first, then falls back to `animals.txt` if Firestore is unavailable.
+- Data loading now depends on Firestore only.
+- `firebaseAdmin.js` is only needed for the one-time CSV upload script. The deployed app does not depend on a service account.
 - Quiz state is currently kept in-memory on the server. This is fine for initial testing, but for production multiplayer reliability you should move game state to a persistent store per user/session.
 
 ## Secure Firestore Rules
 
-Use the rules in `firestore.rules` to block all client SDK access and allow backend-only access via Firebase Admin SDK.
+Use the rules in `firestore.rules` to allow public read access to the `animals` collection and block all writes.
 
 Publish with Firebase CLI:
 
@@ -60,6 +58,5 @@ Or paste the same rules into Firebase Console -> Firestore Database -> Rules.
 If you see `Could not start quiz...`:
 
 1. Open `/health` and check `animalsLoaded` and `dataSource`.
-2. If `dataSource` is `local-file`, your Firebase Admin credentials are missing/invalid.
-3. Verify `FIREBASE_SERVICE_ACCOUNT_JSON` and `FIREBASE_PROJECT_ID` are set in Vercel exactly as listed above.
-4. Confirm your Firestore `animals` collection contains at least 5 records.
+2. If `dataSource` is `firestore`, confirm your Firestore `animals` collection contains at least 5 records and the public read rules are deployed.
+3. If `lastDataLoadError` is set, fix the Firebase environment variables or Firestore access.

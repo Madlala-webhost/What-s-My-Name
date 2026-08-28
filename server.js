@@ -1,13 +1,11 @@
 import path from "path";
-import { readFile } from "fs/promises";
 import { fileURLToPath } from "url";
 import express from "express";
-import { db } from "./firebaseConfig.js";
+import { getDb } from "./firebaseConfig.js";
 import { collection, query, getDocs } from "firebase/firestore";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const LOCAL_ANIMALS_PATH = path.join(__dirname, "animals.txt");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -44,9 +42,7 @@ function renderHome(res, overrides = {}) {
     correct: state.correct,
     timeout: state.timeout,
     ...overrides,
-  
   });
-  
 }
 
 function shuffleArray(list) {
@@ -64,15 +60,31 @@ async function ensureAnimalsLoaded() {
   }
 
   try {
+    const db = getDb();
+
+    if (!db) {
+      throw new Error("Missing Firebase Firestore configuration.");
+    }
+
     const q = query(collection(db, "animals"));
     const querySnapshot = await getDocs(q);
-    if (querySnapshot) {
-      const animals = querySnapshot.docs.map((doc) => doc.data());
 
-      state.animalData.push(...animals);
+    if (!querySnapshot) {
+      throw new Error("Firestore returned no animals query results.");
     }
-  } catch (firestoreError) {
-    console.error("Error loading animals from Firestore:", firestoreError);
+
+    const animals = querySnapshot.docs.map((doc) => doc.data());
+
+    if (animals.length === 0) {
+      throw new Error("No animal data found in Firestore.");
+    }
+
+    state.animalData.push(...animals);
+    state.dataSource = "firestore";
+  } catch (error) {
+    state.lastDataLoadError = error.message;
+    console.error("Error loading animals:", error);
+    throw error;
   }
 }
 
@@ -80,7 +92,7 @@ async function buildQuestion() {
   await ensureAnimalsLoaded();
 
   if (state.animalData.length < 5) {
-    throw new Error("Need at least 5 animals in Firestore to start the quiz.");
+    throw new Error("Need at least 5 animals to start the quiz.");
   }
 
   state.gameOver = false;
@@ -139,7 +151,6 @@ app.get("/", (req, res) => {
       correct: false,
       correctAnswers: [],
     });
-
   } catch (error) {
     console.error("Error rendering main page:", error);
     return res.status(500).send("Internal Server Error");
@@ -197,9 +208,8 @@ app.post("/next-question", async (req, res) => {
     }
 
     await buildQuestion();
+
     return renderHome(res);
-  
-  
   } catch (error) {
     console.error("Error fetching next question:", error);
     return res.status(500).send("Internal Server Error");
@@ -213,6 +223,7 @@ app.post("/skip-question", async (req, res) => {
     }
 
     await buildQuestion();
+
     return renderHome(res);
   } catch (error) {
     console.error("Error skipping question:", error);
